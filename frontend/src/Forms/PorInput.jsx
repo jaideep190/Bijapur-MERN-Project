@@ -50,7 +50,7 @@ const PorInput = () => {
             }
         } catch (error) {
             setError({ error: error.message });
-            console.error('Error:', error);
+            console.error('Error bro: ', error);
         }
     };
 

@@ -1,4 +1,4 @@
-const porData = require('../models/porData')
+import porData from '../models/PorDatas.js';
 
 
 const savePOR = async (req,res)=>{
@@ -22,4 +22,4 @@ const savePOR = async (req,res)=>{
 
 
 
-module.exports = { savePOR};
+export { savePOR};

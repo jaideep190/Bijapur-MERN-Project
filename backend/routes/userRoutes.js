@@ -7,6 +7,7 @@ import {
   updateUserProfile,
 } from '../controllers/userController.js';
 import { protect } from '../middleware/authMiddleware.js';
+import { savePOR } from '../controllers/porData.js';
 
 const router = express.Router();
 
@@ -18,4 +19,5 @@ router
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile);
 
+router.post('/savepor', savePOR);
 export default router;
