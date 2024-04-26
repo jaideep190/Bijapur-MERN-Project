@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PorForm from './PorForm';
-// import '../styles/PorInput.css';
+import '../styles/PorInput.css'; 
 
 const PorInput = () => {
     const [formData, setFormData] = useState({
@@ -61,55 +61,52 @@ const PorInput = () => {
     if (!formData.toggle) {
         return (
             <>
-            <div className="container">
+            <div class="form-container">
                 <h1>POR DETAILS</h1>
                 <form onSubmit={saveData} id="porDetailsForm">
-                    {/* Culprit Details */}
-                    <div className="section">
+                    <div class="form-section">
                         <h2>Culprit Details</h2>
-                        <label htmlFor="porNumber">POR</label>
-                        <input type="text" id="porNumber" name="porNumber" value={formData.porNumber} onChange={handleChange} />
-                        <label htmlFor="culpritName">Name</label>
-                        <input type="text" id="culpritName" name="culpritName" value={formData.culpritName} onChange={handleChange} />
-                        <label htmlFor="fatherName">Father's Name</label>
-                        <input type="text" id="fatherName" name="fatherName" value={formData.fatherName} onChange={handleChange} />
-                        <label htmlFor="culpritAddress">Address</label>
-                        <input type="text" id="culpritAddress" name="culpritAddress" value={formData.culpritAddress} onChange={handleChange} />
-                        <label htmlFor="caste">Caste</label>
-                        <input type="text" id="caste" name="caste" value={formData.caste} onChange={handleChange} />
+                        <label class="form-label" htmlFor="porNumber">POR</label>
+                        <input class="form-input" type="text" id="porNumber" name="porNumber" value={formData.porNumber} onChange={handleChange} />
+                        <label class="form-label" htmlFor="culpritName">Name</label>
+                        <input class="form-input" type="text" id="culpritName" name="culpritName" value={formData.culpritName} onChange={handleChange} />
+                        <label class="form-label" htmlFor="fatherName">Father's Name</label>
+                        <input class="form-input" type="text" id="fatherName" name="fatherName" value={formData.fatherName} onChange={handleChange} />
+                        <label class="form-label" htmlFor="culpritAddress">Address</label>
+                        <input class="form-input" type="text" id="culpritAddress" name="culpritAddress" value={formData.culpritAddress} onChange={handleChange} />
+                        <label class="form-label" htmlFor="caste">Caste</label>
+                        <input class="form-input" type="text" id="caste" name="caste" value={formData.caste} onChange={handleChange} />
                     </div>
-                    {/* Crime Details */}
-                    <div className="section">
+                    <div class="form-section">
                         <h2>Crime Details</h2>
-                        <label htmlFor="crimeType">Type</label>
-                        <input type="text" id="crimeType" name="crimeType" value={formData.crimeType} onChange={handleChange} />
-                        <label htmlFor="crimeSection">Section</label>
-                        <input type="text" id="crimeSection" name="crimeSection" value={formData.crimeSection} onChange={handleChange} />
-                        <label htmlFor="crimePlace">Place</label>
-                        <input type="text" id="crimePlace" name="crimePlace" value={formData.crimePlace} onChange={handleChange} />
-                        <label htmlFor="crimeDate">Date</label>
-                        <input type="text" id="crimeDate" name="crimeDate" value={formData.crimeDate} onChange={handleChange} />
-                        <label htmlFor="seizedGoods">Seized Goods</label>
-                        <input type="text" id="seizedGoods" name="seizedGoods" value={formData.seizedGoods} onChange={handleChange} />
-                        <label htmlFor="witnessNames">Witness Names</label>
-                        <input type="text" id="witnessNames" name="witnessNames" value={formData.witnessNames} onChange={handleChange} />
+                        <label class="form-label" htmlFor="crimeType">Type</label>
+                        <input class="form-input" type="text" id="crimeType" name="crimeType" value={formData.crimeType} onChange={handleChange} />
+                        <label class="form-label" htmlFor="crimeSection">Section</label>
+                        <input class="form-input" type="text" id="crimeSection" name="crimeSection" value={formData.crimeSection} onChange={handleChange} />
+                        <label class="form-label" htmlFor="crimePlace">Place</label>
+                        <input class="form-input" type="text" id="crimePlace" name="crimePlace" value={formData.crimePlace} onChange={handleChange} />
+                        <label class="form-label" htmlFor="crimeDate">Date</label>
+                        <input class="form-input" type="text" id="crimeDate" name="crimeDate" value={formData.crimeDate} onChange={handleChange} />
+                        <label class="form-label" htmlFor="seizedGoods">Seized Goods</label>
+                        <input class="form-input" type="text" id="seizedGoods" name="seizedGoods" value={formData.seizedGoods} onChange={handleChange} />
+                        <label class="form-label" htmlFor="witnessNames">Witness Names</label>
+                        <input class="form-input" type="text" id="witnessNames" name="witnessNames" value={formData.witnessNames} onChange={handleChange} />
                     </div>
-                    {/* Officer Details */}
-                    <div className="section">
+                    <div class="form-section">
                         <h2>Officer Details</h2>
-                        <label htmlFor="areaAssistant">Area Assistant</label>
-                        <input type="text" id="areaAssistant" name="areaAssistant" value={formData.areaAssistant} onChange={handleChange} />
-                        <label htmlFor="rangeOfficer">Range Officer</label>
-                        <input type="text" id="rangeOfficer" name="rangeOfficer" value={formData.rangeOfficer} onChange={handleChange} />
-                        <label htmlFor="areaOfficer">Area Officer</label>
-                        <input type="text" id="areaOfficer" name="areaOfficer" value={formData.areaOfficer} onChange={handleChange} />
-                        <label htmlFor="vma">V.M.A</label>
-                        <input type="text" id="vma" name="vma" value={formData.vma} onChange={handleChange} />
-                        <label htmlFor="premises">Premises</label>
-                        <input type="text" id="premises" name="premises" value={formData.premises} onChange={handleChange} />
+                        <label class="form-label" htmlFor="areaAssistant">Area Assistant</label>
+                        <input class="form-input" type="text" id="areaAssistant" name="areaAssistant" value={formData.areaAssistant} onChange={handleChange} />
+                        <label class="form-label" htmlFor="rangeOfficer">Range Officer</label>
+                        <input class="form-input" type="text" id="rangeOfficer" name="rangeOfficer" value={formData.rangeOfficer} onChange={handleChange} />
+                        <label class="form-label" htmlFor="areaOfficer">Area Officer</label>
+                        <input class="form-input" type="text" id="areaOfficer" name="areaOfficer" value={formData.areaOfficer} onChange={handleChange} />
+                        <label class="form-label" htmlFor="vma">V.M.A</label>
+                        <input class="form-input" type="text" id="vma" name="vma" value={formData.vma} onChange={handleChange} />
+                        <label class="form-label" htmlFor="premises">Premises</label>
+                        <input class="form-input" type="text" id="premises" name="premises" value={formData.premises} onChange={handleChange} />
                     </div>
-                    <button onClick={handleSubmit} type='click'>Show Form</button>
-                    <button type="submit">Register Crime</button>
+                    <button class="form-button" onClick={handleSubmit} type='click'>Show Form</button>
+                    <button class="form-button" type="submit">Register Crime</button>
                 </form>
             </div>
         </>
