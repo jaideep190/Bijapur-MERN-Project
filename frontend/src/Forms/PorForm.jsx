@@ -65,10 +65,10 @@ export class PorForm extends Component {
                     <body className="por_form" >
                         <table>
                             <tr>
-                                <th colspan="2">Forest Department, Regional Forest<br/>(Part One)</th>
+                                <th colspan="2" style={{textAlign: 'center', fontWeight: 'bold'}}>Forest Department, Regional Forest<br/>(Part One)</th>
                             </tr>
                             <tr><td>POR No: {this.state.porNumber}</td><td>Page No.</td></tr>
-                            <tr><th colspan="2">Initial Crime Information</th></tr>
+                            <tr><th colspan="2" style={{textAlign: 'center', fontWeight: 'bold'}}>Initial Crime Information</th></tr>
                             <tr><td colspan="2">1. Report Number: 999 Date:07 Month:03 Year 2023</td></tr>
                             <tr><td colspan="2" id="culpritDetails">2. Name of Culprit: {this.state.culpritName}, Father's Name: {this.state.fatherName}, Caste: {this.state.caste}, Address:  {this.state.culpritAddress}</td></tr>
                             <tr><td colspan="2" id="caseSection">3. Type and Section Of Crime: {this.state.crimeType}, {this.state.crimeSection}</td></tr>
@@ -87,10 +87,10 @@ export class PorForm extends Component {
 
                         <table>
                             <tr>
-                                <th colspan="2">Forest Department, Regional Forest<br/>(Part Two)</th>
+                                <th colspan="2" style={{textAlign: 'center', fontWeight: 'bold'}}>Forest Department, Regional Forest<br/>(Part Two)</th>
                             </tr>
                             <tr><td>POR No: {this.state.porNumber}</td><td>Page No.</td></tr>
-                            <tr><th colspan="2">Initial Crime Information</th></tr>
+                            <tr><th colspan="2" style={{textAlign: 'center', fontWeight: 'bold'}}>Initial Crime Information</th></tr>
                             <tr><td colspan="2">1. Report Number: 999 Date:07 Month:03 Year 2023</td></tr>
                             <tr><td colspan="2" id="culpritDetails">2. Name of Culprit, Father's Name, Caste, and Address: {this.state.culpritName}, {this.state.fatherName},{this.state.culpritAddress},{this.state.caste}</td></tr>
                             <tr><td colspan="2" id="caseSection">3. Type and Section Of Crime: {this.state.crimeType}, {this.state.crimeSection}</td></tr>
@@ -109,10 +109,10 @@ export class PorForm extends Component {
 
                         <table>
                             <tr>
-                                <th colspan="2">Forest Department, Regional Forest<br/>(Part Three)</th>
+                                <th colspan="2" style={{textAlign: 'center', fontWeight: 'bold'}}>Forest Department, Regional Forest<br/>(Part Three)</th>
                             </tr>
                             <tr><td>POR No: {this.state.porNumber}</td><td>Page No.</td></tr>
-                            <tr><th colspan="2">Initial Crime Information</th></tr>
+                            <tr><th colspan="2" style={{textAlign: 'center', fontWeight: 'bold'}}>Initial Crime Information</th></tr>
                             <tr><td colspan="2">1. Report Number: 999 Date:07 Month:03 Year 2023</td></tr>
                             <tr><td colspan="2" id="culpritDetails">2. Name of Culprit, Father's Name, Caste, and Address: {this.state.culpritName}, {this.state.fatherName},{this.state.culpritAddress},{this.state.caste}</td></tr>
                             <tr><td colspan="2" id="caseSection">3. Type and Section Of Crime: {this.state.crimeType}, {this.state.crimeSection}</td></tr>
