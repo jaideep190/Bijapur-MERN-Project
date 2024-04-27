@@ -1,13 +1,11 @@
+// backend/routes/userRoutes.js
+
 import express from 'express';
-import {
-  authUser,
-  registerUser,
-  logoutUser,
-  getUserProfile,
-  updateUserProfile,
-} from '../controllers/userController.js';
+import { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile } from '../controllers/userController.js';
 import { protect } from '../middleware/authMiddleware.js';
 import { savePOR } from '../controllers/porData.js';
+import { getCrimeDetails } from '../controllers/crimeDetailsController.js'; // Import the new controller
+import Por from '../models/PorModel.js';
 
 const router = express.Router();
 
@@ -19,5 +17,8 @@ router
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile);
 
-router.post('/savepor', savePOR);
+router.post('/savepor',protect, savePOR);
+router.route('/crimedetails').get(protect, getCrimeDetails); // Use the function from the new controller
+
 export default router;
+

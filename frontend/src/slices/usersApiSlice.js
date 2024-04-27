@@ -1,3 +1,5 @@
+// frontend/src/slices/usersApiSlice.js
+
 import { apiSlice } from './apiSlice';
 const USERS_URL = '/api/users';
 
@@ -30,6 +32,19 @@ export const userApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    getCrimeDetails: builder.query({
+      query: () => ({
+        url: `${USERS_URL}/crimedetails`,
+        method: 'GET',
+      }),
+    }),
+    savePor: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/savepor`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -38,4 +53,7 @@ export const {
   useLogoutMutation,
   useRegisterMutation,
   useUpdateUserMutation,
+  useGetCrimeDetailsQuery,
+  useSavePorMutation,
 } = userApiSlice;
+
