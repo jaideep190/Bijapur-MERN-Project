@@ -19,7 +19,7 @@ import PrivateRoute from './components/PrivateRoute.jsx';
 import Dashboard from './screens/Dashboard.jsx';
 import PageNotFound from './screens/PageNotFound.jsx';
 import PorInput from './Forms/PorInput.jsx';
-import CrimeDetails from './components/CrimeDetails.jsx';
+import ExistingPorNumbers from './components/ExistingPorNumbers.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,7 +30,7 @@ const router = createBrowserRouter(
         <Route path='/profile' element={<ProfileScreen />} />
         <Route path='/' element={<Dashboard />} />
         <Route path='/porform' element={<PorInput/>} />
-        <Route path='/crimedetails' element={<CrimeDetails/>} />
+        <Route path='/existingpornumbers' element={<ExistingPorNumbers/>} />
       </Route>
       <Route path='*' element={<PageNotFound />} />
     </Route>

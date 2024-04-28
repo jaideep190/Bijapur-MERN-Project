@@ -47,7 +47,7 @@ const Header = () => {
                       <NavDropdown.Item>Jabtinama Form</NavDropdown.Item>
                     </LinkContainer>
                   </NavDropdown>
-                  <LinkContainer to='/crimedetails'>
+                  <LinkContainer to='/existingpornumbers'>
                     <Nav.Link>Crime Details</Nav.Link>
                   </LinkContainer>
                   <NavDropdown title={userInfo.name} id='username'>

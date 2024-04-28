@@ -3,7 +3,7 @@
 import Por from '../models/PorModel.js';
 import asyncHandler from 'express-async-handler'; // Import asyncHandler
 
-const getCrimeDetails = asyncHandler(async (req, res) => { // Correct asyncHandler usage
+const ExistingPorNumbers = asyncHandler(async (req, res) => { // Correct asyncHandler usage
     const porNumbers = await Por.find({}, 'porNumber'); // Assuming 'porNumber' is the field containing POR numbers
     if (porNumbers) {
         res.json(porNumbers);
@@ -14,4 +14,4 @@ const getCrimeDetails = asyncHandler(async (req, res) => { // Correct asyncHandl
 });
 
 
-export { getCrimeDetails };
+export { ExistingPorNumbers };

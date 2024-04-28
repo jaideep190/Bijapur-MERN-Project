@@ -4,8 +4,9 @@ import express from 'express';
 import { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile } from '../controllers/userController.js';
 import { protect } from '../middleware/authMiddleware.js';
 import { savePOR } from '../controllers/porData.js';
-import { getCrimeDetails } from '../controllers/crimeDetailsController.js'; // Import the new controller
-import Por from '../models/PorModel.js';
+import { ExistingPorNumbers } from '../controllers/ExistingPorNumbersController.js';
+import getUserFormStatus from '../controllers/getUserFormStatus.js';
+import updateUserFormStatus from '../controllers/updateUserFormStatus.js';
 
 const router = express.Router();
 
@@ -18,7 +19,9 @@ router
   .put(protect, updateUserProfile);
 
 router.post('/savepor',protect, savePOR);
-router.route('/crimedetails').get(protect, getCrimeDetails); // Use the function from the new controller
+router.route('/existingpornumbers').get(protect, ExistingPorNumbers);
+router.post('/getuserformstatus',protect,getUserFormStatus) // Use the function from the new controller
+router.post('/updateuserformstatus',protect,updateUserFormStatus)
 
 export default router;
 

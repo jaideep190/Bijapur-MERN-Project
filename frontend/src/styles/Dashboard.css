@@ -1,0 +1,15 @@
+/* frontend/src/screens/Dashboard.css */
+
+.form-heading {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .form-details {
+    margin-top: 20px;
+  }
+  
+  .form-field {
+    font-weight: bold;
+  }
+  

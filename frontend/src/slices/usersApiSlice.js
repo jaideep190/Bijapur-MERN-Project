@@ -34,13 +34,27 @@ export const userApiSlice = apiSlice.injectEndpoints({
     }),
     getCrimeDetails: builder.query({
       query: () => ({
-        url: `${USERS_URL}/crimedetails`,
+        url: `${USERS_URL}/existingpornumbers`,
         method: 'GET',
       }),
     }),
     savePor: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/savepor`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
+    updateFormStatus: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/updateuserformstatus`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
+    getUserFormStatus: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/getuserformstatus`,
         method: 'POST',
         body: data,
       }),
@@ -55,5 +69,7 @@ export const {
   useUpdateUserMutation,
   useGetCrimeDetailsQuery,
   useSavePorMutation,
+  useUpdateFormStatusMutation,
+  useGetUserFormStatusMutation,
 } = userApiSlice;
 

@@ -2,12 +2,18 @@
 
 import React from 'react';
 import { useGetCrimeDetailsQuery } from '../slices/usersApiSlice';
+import Loader from './Loader';
 
-const CrimeDetails = () => {
+const ExistingPorNumbers = () => {
   const { data, error, isLoading } = useGetCrimeDetailsQuery();
   
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+        <div>
+      <h1>Existing POR Numbers</h1>
+      <Loader/>
+    </div>
+    );
   }
 
   if (error) {
@@ -16,7 +22,7 @@ const CrimeDetails = () => {
 
   return (
     <div>
-      <h1>Crime Details</h1>
+      <h1>Existing POR Numbers</h1>
       <ul>
         {data.map((crime) => (
           <li key={crime.id}>{crime.porNumber}</li>
@@ -26,4 +32,4 @@ const CrimeDetails = () => {
   );
 };
 
-export default CrimeDetails;
+export default ExistingPorNumbers;

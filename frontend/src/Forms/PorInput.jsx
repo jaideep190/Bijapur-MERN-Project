@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import PorForm from './PorForm';
 import '../styles/PorInput.css'; 
-import { useSavePorMutation } from '../slices/usersApiSlice';
+import { useSavePorMutation, useUpdateFormStatusMutation } from '../slices/usersApiSlice';
 import Loader from '../components/Loader';
 import { ToastContainer, toast } from 'react-toastify';
-
 
 const PorInput = () => {
     const [formData, setFormData] = useState({
@@ -29,12 +28,16 @@ const PorInput = () => {
     });
     const [error, setError] = useState('');
     const [savePor, { isLoading }] = useSavePorMutation();
+    const [updateFormStatus, {updateIsLoading}] = useUpdateFormStatusMutation();
+
     const handleChange = event => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
     };
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         setFormData({ ...formData, toggle: 1 });
+        const response = await updateFormStatus({porNumber: formData.porNumber, formType: 'porForm'});
+        console.log(`Update response: ${response}`);
     };
     
     const saveData = async event => {
@@ -48,6 +51,7 @@ const PorInput = () => {
             const response = await savePor(formData);
             console.log(response);
             toast.success(response.data.msg);
+            
             if (response.data.msg === 'User Created!') {
                 handleSubmit();
             }
