@@ -21,6 +21,7 @@ import PageNotFound from './screens/PageNotFound.jsx';
 import PorInput from './Forms/PorInput.jsx';
 import ExistingPorNumbers from './components/ExistingPorNumbers.jsx';
 import SupurthinamaInput from './Forms/SupurthinamaInput.jsx';
+import JabtinamaInput from './Forms/JabtinamaInput.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
         <Route path='/' element={<Dashboard />} />
         <Route path='/porform' element={<PorInput/>} />
         <Route path='/supurthinamaform' element={<SupurthinamaInput/>}/>
+        <Route path='/jabtinamaform' element={<JabtinamaInput/>}/>
         <Route path='/existingpornumbers' element={<ExistingPorNumbers/>} />
       </Route>
       <Route path='*' element={<PageNotFound />} />

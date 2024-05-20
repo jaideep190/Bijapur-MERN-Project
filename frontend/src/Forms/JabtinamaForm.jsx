@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet';
 export class JabtinamaForm extends Component {
     constructor(props) {
         super(props);
-a
+
         this.state = {
             caseNumber: props.formData.caseNumber,
             date: props.formData.date,
@@ -191,9 +191,9 @@ a
                 <button type="button" id="edit_button" onClick={this.EditJabtinama} style={{ marginLeft: '50px' }}>
                     Edit
                 </button>
-                <button type="button" onClick={this.downloadPDF} style={{ marginLeft: '50px' }}>
+                {/* <button type="button" onClick={this.downloadPDF} style={{ marginLeft: '50px' }}>
                     Download PDF
-                </button>
+                </button> */}
                 <ReactToPrint
                     trigger={() => {
                         return <button style={{ marginLeft: '400px' }}>Print POR</button>;

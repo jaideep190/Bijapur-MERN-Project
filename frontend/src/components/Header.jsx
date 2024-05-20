@@ -43,7 +43,9 @@ const Header = () => {
                     <LinkContainer to='/porform'>
                       <NavDropdown.Item>Por Form</NavDropdown.Item>
                     </LinkContainer>
-                    <LinkContainer to='/jabtinama-form'>
+                    <LinkContainer to='/supurthinamaform'>
+                      <NavDropdown.Item>Supurdhnama Form</NavDropdown.Item>
+                    </LinkContainer><LinkContainer to='/jabtinamaform'>
                       <NavDropdown.Item>Jabtinama Form</NavDropdown.Item>
                     </LinkContainer>
                   </NavDropdown>
