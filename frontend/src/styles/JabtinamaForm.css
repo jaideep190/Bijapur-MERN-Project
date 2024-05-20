@@ -1,0 +1,49 @@
+.jabtinama-body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .jabtinama-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .jabtinama-heading {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .jabtinama-content {
+    margin-top: 20px;
+  }
+  
+  .jabtinama-section {
+    margin-bottom: 20px;
+  }
+  
+  .jabtinama-text {
+    margin-bottom: 10px;
+  }
+  
+  .edit-button,
+  .print-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .edit-button:hover,
+  .print-button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -62,6 +62,8 @@ export class JabtinamaForm extends Component {
     };
 
     render() {
+        const { formData } = this.state;
+
         return (
             <div ref={(el) => (this.componentRef = el)}>
                 <Helmet>
@@ -70,137 +72,132 @@ export class JabtinamaForm extends Component {
                     <title>Forest Department Supurdannama</title>
                     <style>
                         {`
-                        body {
-      position: relative;
-    }
-    .top-right {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      margin-top: 50px;
-    }
-    th, td {
-      border: 1px solid black;
-      padding: 8px;
-    }
-    th {
-      background-color: #f2f2f2;
-      text-align: left;
-      text-decoration: underline; /* Underline the headings */
-    }
-    .enclosure, .forestDepartment {
-      text-align: center;
-      font-weight: bold;
-      margin-top: 20px;
-    }
-    .signatures {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-    #caseNumber, #date {
-      text-align: right;
-      padding: 5px 10px;
-      margin-bottom: 10px; /* Add space after Case No. and Date */
-    }
-    #witness1, #witness2, #witness3, #witness4 {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      text-align: center;
-      vertical-align: middle;
-    }
-    th[colspan="16"] {
-      text-align: left;
-    }
-    .criminal-signature, .officer-signature {
-      width: 20%;
-    }
-    .witness-signatures {
-      width: 60%;
-      text-align: center;
-    }
-
-                    `}
+                            body {
+                                position: relative;
+                                font-family: Arial, sans-serif;
+                            }
+                            .top-right {
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                text-align: right;
+                                margin: 10px;
+                            }
+                            table {
+                                border-collapse: collapse;
+                                width: 100%;
+                                font-size: 14px;
+                                margin-top: 50px;
+                            }
+                            th, td {
+                                border: 1px solid black;
+                                padding: 5px;
+                            }
+                            th {
+                                background-color: #f2f2f2;
+                                text-align: center;
+                                text-decoration: underline; /* Underline the headings */
+                            }
+                            .signatures {
+                                display: flex;
+                                justify-content: space-between;
+                                margin-top: 20px;
+                            }
+                            .signature-section {
+                                width: 30%;
+                                text-align: center;
+                            }
+                            .form-title {
+                                text-align: center;
+                                margin-top: 20px;
+                                font-weight: bold;
+                            }
+                            
+                        `}
                     </style>
                 </Helmet>
-                <div className="top-right">
-                    <span>Case No. <input type="text" id="caseNumberInput" /></span>
-                    <br />
-                    <span>Date <input type="text" id="dateInput" /></span>
+
+                <div className="form-title">
+                    Forest Department Seizure Report under Section 52 of the Forest Act, 1927
                 </div>
 
-                <h1>Fard Japtinama Forest Department under 52 Forest Act 1927</h1>
+                <div className="top-right">
+                    <div className="input-container">
+                        <label>Case Number:</label>
+                        <span>{this.state.caseNumber}</span>
+                    </div>
+                    <div className="input-container">
+                        <label>Date:</label>
+                        <span>{this.state.date}</span>
+                    </div>
+                </div>
 
                 <table id="forestDepartmentTable">
-                    <tr>
-                        <th id="placeAndTime">Place and Time</th>
-                        <th id="nameAndPositionOffender">Name and Position of Offender</th>
-                        <th id="nameOffenderResidence">Name of Offender and Residence</th>
-                        <th id="caste">Caste</th>
-                        <th id="nameSeizingOfficer">Name of Seizing Officer</th>
-                        <th id="nameInvestigatingOfficer">Name of Investigating Officer</th>
-                        <th id="specialRecordPrepared">Special Record Prepared</th>
-                        <th id="timber">Timber</th>
-                        <th id="firewood">Firewood</th>
-                        <th id="others">Others</th>
-                        <th id="rate">Rate</th>
-                        <th id="quantity">Quantity</th>
-                        <th id="amount">Amount</th>
-                        <th id="total">Total</th>
-                        <th id="quantity1">Quantity</th>
-                        <th id="amount1">Amount</th>
-                    </tr>
-                    <tr>
-                        <td id="entry1"></td>
-                        <td id="entry2"></td>
-                        <td id="entry3"></td>
-                        <td id="entry4"></td>
-                        <td id="entry5"></td>
-                        <td id="entry6"></td>
-                        <td id="entry7"></td>
-                        <td id="entry8"></td>
-                        <td id="entry9"></td>
-                        <td id="entry10"></td>
-                        <td id="entry11"></td>
-                        <td id="entry12"></td>
-                        <td id="entry13"></td>
-                        <td id="entry14"></td>
-                        <td id="entry15"></td>
-                        <td id="entry16"></td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Serial and Time</th>
+                            <th>Place and Crime Occurred</th>
+                            <th>Name and Position of Offender</th>
+                            <th>Name of Offender and Residence</th>
+                            <th>Caste</th>
+                            <th>Name of Seizing Officer</th>
+                            <th>Name of Investigating Officer</th>
+                            <th>Special Record Prepared</th>
+                            <th>Timber</th>
+                            <th>Firewood</th>
+                            <th>Others</th>
+                            <th>Rate</th>
+                            <th>Quantity</th>
+                            <th>Amount</th>
+                            <th>Total</th>
+                            <th>Quantity</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{this.state.placeAndTime}</td>
+                            <td>{this.state.nameAndPositionOffender}</td>
+                            <td>{this.state.nameOffenderResidence}</td>
+                            <td>{this.state.caste}</td>
+                            <td>{this.state.nameSeizingOfficer}</td>
+                            <td>{this.state.nameInvestigatingOfficer}</td>
+                            <td>{this.state.specialRecordPrepared}</td>
+                            <td>{this.state.timber}</td>
+                            <td>{this.state.firewood}</td>
+                            <td>{this.state.others}</td>
+                            <td>{this.state.rate}</td>
+                            <td>{this.state.quantity}</td>
+                            <td>{this.state.amount}</td>
+                            <td>{this.state.total}</td>
+                            <td>{this.state.quantity1}</td>
+                            <td>{this.state.amount1}</td>
+                        </tr>
+                    </tbody>
                 </table>
 
                 <div className="signatures">
-                    <div className="criminal-signature">
-                        <p>Signature of the Criminal <span id="criminalSignature"></span></p>
+                    <div className="signature-section">
+                        <p>Signature Name:</p>
+                        <p>1)</p>
+                        <p>2)</p>
+                        <p>3)</p>
                     </div>
-                    <div className="witness-signatures">
-                        <p>Signature of Witnesses: <br /> 1) <br /> 2) <br /> 3) <br /> 4)</p>
-                    </div>
-                    <div className="officer-signature">
-                        <p>Signature of the Officer who seized <span id="officerSignature"></span></p>
+                    <div className="signature-section">
+                        <p>Signature of the Officer who Seized</p>
                     </div>
                 </div>
 
-                <button type="button" id="edit_button" onClick={this.EditJabtinama} style={{ marginLeft: '50px' }}>
+                <button type="button" id="edit_button" onClick={this.EditJabtinama} style={{ marginTop: '20px' }}>
                     Edit
                 </button>
-                {/* <button type="button" onClick={this.downloadPDF} style={{ marginLeft: '50px' }}>
+                <button type="button" onClick={this.downloadPDF} style={{ marginLeft: '50px' }}>
                     Download PDF
-                </button> */}
+                </button>
                 <ReactToPrint
-                    trigger={() => {
-                        return <button style={{ marginLeft: '400px' }}>Print POR</button>;
-                    }}
+                    trigger={() => <button style={{ marginLeft: '400px' }}>Print POR</button>}
                     content={() => this.componentRef}
-                    documentTitle="new document"
-                    pageStyle="print"
+                    documentTitle="Forest_Department_Supurdannama"
                 />
             </div>
         );
@@ -208,3 +205,4 @@ export class JabtinamaForm extends Component {
 }
 
 export default JabtinamaForm;
+
