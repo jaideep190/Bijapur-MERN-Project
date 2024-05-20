@@ -1,0 +1,42 @@
+.supurthinama-body {
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    font-size: 15px; /* Font size in pixels */
+}
+
+.supurthinama-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    border: 0px solid #ccc;
+    padding: 10px;
+}
+
+.supurthinama-heading {
+    text-align: center;
+    margin-bottom: 10px; /* Reduced margin for bigger headings */
+    font-size: 24px; /* Font size in pixels */
+}
+
+.supurthinama-text {
+    text-align: left;
+    margin-bottom: 5px; /* Reduced margin for bigger headings */
+    line-height: 1.6; /* Increased line spacing */
+    font-size: 16px; /* Font size in pixels */
+}
+
+.supurthinama-items {
+    text-align: center;
+    border: 0px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 14px; /* Font size in pixels */
+}
+
+@media print {
+    .edit-button,
+    .print-button {
+        display: none;
+    }
+}
