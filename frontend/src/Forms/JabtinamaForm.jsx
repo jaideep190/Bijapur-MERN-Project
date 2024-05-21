@@ -54,7 +54,7 @@ export class JabtinamaForm extends Component {
                 const pdfWidth = pdf.internal.pageSize.getWidth();
                 const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
                 pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-                pdf.save('por_form.pdf');
+                pdf.save('jabtinama.pdf');
             })
             .catch(function (error) {
                 console.log('Error occurred:', error);
@@ -77,11 +77,9 @@ export class JabtinamaForm extends Component {
                                 font-family: Arial, sans-serif;
                             }
                             .top-right {
-                                position: absolute;
-                                top: 0;
-                                right: 0;
+                                
                                 text-align: right;
-                                margin: 10px;
+                                margin: 20px;
                             }
                             table {
                                 border-collapse: collapse;
@@ -100,6 +98,7 @@ export class JabtinamaForm extends Component {
                             }
                             .signatures {
                                 display: flex;
+                                text-align: center;
                                 justify-content: space-between;
                                 margin-top: 20px;
                             }
@@ -108,7 +107,7 @@ export class JabtinamaForm extends Component {
                                 text-align: center;
                             }
                             .form-title {
-                                text-align: center;
+                                text-align: left;
                                 margin-top: 20px;
                                 font-weight: bold;
                             }
