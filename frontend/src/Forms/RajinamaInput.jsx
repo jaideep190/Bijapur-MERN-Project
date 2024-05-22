@@ -2,43 +2,51 @@ import React, { useState } from 'react';
 import RajinamaForm from './RajinamaForm';
 
 const RajinamaInput = () => {
-    const [formData, setFormData] = useState({
-      name1: '',
-      religion1: '',
-      caste1: '',
-      name2: '',
-      religion2: '',
-      caste2: '',
-      name3: '',
-      religion3: '',
-      caste3: '',
-      name4: '',
-      religion4: '',
-      caste4: '',
-      name5: '',
-      religion5: '',
-      caste5: '',
-      forestCrimes: '',
-      date: '',
-    });
+  const [formData, setFormData] = useState({
+    suspect1: '',
+    fatherName1: '',
+    caste1: '',
+    residence1: '',
+    suspect2: '',
+    fatherName2: '',
+    caste2: '',
+    residence2: '',
+    suspect3: '',
+    fatherName3: '',
+    caste3: '',
+    residence3: '',
+    suspect4: '',
+    fatherName4: '',
+    caste4: '',
+    residence4: '',
+    suspect5: '',
+    fatherName5: '',
+    caste5: '',
+    residence5: '',
+    forestRelatedCrimes: '',
+    date: '',
+    month: '',
+    year: '',
+    witness1: '',
+    witness2: '',
+    investigationOfficer: '',
+  });
 
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [isEditing, setIsEditing] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData({ ...formData, [name]: value });
-    };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      setIsSubmitted(true);
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
 
-    const handleEditClick = () => {
-      setIsEditing(true);
-      setIsSubmitted(false);
-    };
+  const handleEditClick = () => {
+    setIsSubmitted(false);
+  };
 
     return (
       <>
@@ -89,7 +97,6 @@ const RajinamaInput = () => {
                 <textarea className="form-input" id="forestCrimes" name="forestCrimes" rows="4" placeholder="Enter details about forest crimes..." value={formData.forestCrimes} onChange={handleChange}></textarea>
               </div>
               <input className="date-input" type="date" name="date" value={formData.date} onChange={handleChange} />
-              <button className="form-button" onClick={handleSubmit} type="button">Show Form</button>
               <button type="submit">Submit</button>
             </form>
           </div>
@@ -101,4 +108,3 @@ const RajinamaInput = () => {
 };
 
 export default RajinamaInput;
-
