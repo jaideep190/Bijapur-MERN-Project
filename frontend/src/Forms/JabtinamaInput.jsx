@@ -69,7 +69,7 @@ const JabtinamaInput = () => {
                     <label className="form-label" htmlFor="caseNumber">Case Number</label>
                     <input className="form-input" type="text" id="caseNumber" name="caseNumber" value={formData.caseNumber} onChange={handleChange} />
                     <label className="form-label" htmlFor="date">Date</label>
-                    <input className="form-input" type="text" id="date" name="date" value={formData.date} onChange={handleChange} />
+                    <input className="form-input" type="text" id    ="date" name="date" value={formData.date} onChange={handleChange} />
                 </div>
                 <div className="form-section">
                     <h2>Forest Officer Details</h2>

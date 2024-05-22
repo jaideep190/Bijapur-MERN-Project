@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import RajinamaForm from './RajinamaForm';
 
-const RaajinamaInput = () => {
+const RajinamaInput = () => {
     const [formData, setFormData] = useState({
       name1: '',
       religion1: '',
@@ -99,5 +99,5 @@ const RaajinamaInput = () => {
     );
 };
 
-export default RaajinamaInput;
+export default RajinamaInput;
 

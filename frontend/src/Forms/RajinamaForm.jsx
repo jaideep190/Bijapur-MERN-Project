@@ -1,66 +1,39 @@
-
-import React, { Component } from 'react';
+import React, { useRef } from 'react';
 import ReactToPrint from 'react-to-print';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Helmet } from 'react-helmet';
 
-export class RajinamaFormForm extends Component {
-    constructor(props) {
-        super(props);
+const RajinamaForm = ({ formData, handleEditClick }) => {
+    const componentRef = useRef(null);
 
-        this.state = {
-            name1: this.props.formData.name1,
-            religion1: this.props.formData.religion1,
-            caste1: this.props.formData.caste1,
-            name2: this.props.formData.name2,
-            religion2: this.props.formData.religion2,
-            caste2: this.props.formData.caste2,
-            name3: this.props.formData.name3,
-            religion3: this.props.formData.religion3,
-            caste3: this.props.formData.caste3,
-            name4: this.props.formData.name4,
-            religion4: this.props.formData.religion4,
-            caste4: this.props.formData.caste4,
-            name5: this.props.formData.name5,
-            religion5: this.props.formData.religion5,
-            caste5: this.props.formData.caste5,
-            forestCrimes: this.props.formData.forestCrimes,
-            date: this.props.formData.date,
-        };this.Editrajinama = this.Editrajinama.bind(this);
-}
+    const downloadPDF = () => {
+        const input = componentRef.current;
+        const scale = 3;
 
-Editrajinama() {
-    this.props.handleEditClick();
-}
-
-downloadPDF = () => {
-    const input = this.componentRef;
-    const scale = 3;
-
-    html2canvas(input, {
-        scale: scale,
-        useCORS: true,
-        allowTaint: true,
-        scrollX: 0,
-        scrollY: -window.scrollY,
-    })
-        .then((canvas) => {
-            const imgData = canvas.toDataURL('image/png', 1.0);
-            const pdf = new jsPDF('l', 'pt', [2480, 3508]);
-            const imgProps = pdf.getImageProperties(imgData);
-            const pdfWidth = pdf.internal.pageSize.getWidth();
-            const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-            pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-            pdf.save('rajinama.pdf');
+        html2canvas(input, {
+            scale: scale,
+            useCORS: true,
+            allowTaint: true,
+            scrollX: 0,
+            scrollY: -window.scrollY,
         })
-        .catch(function (error) {
-            console.log('Error occurred:', error);
-        });
-};
-render() {
+            .then((canvas) => {
+                const imgData = canvas.toDataURL('image/png', 1.0);
+                const pdf = new jsPDF('l', 'pt', [2480, 3508]);
+                const imgProps = pdf.getImageProperties(imgData);
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                pdf.save('rajinama.pdf');
+            })
+            .catch(function (error) {
+                console.log('Error occurred:', error);
+            });
+    };
+
     return (
-        <div ref={(el) => (this.componentRef = el)}>
+        <div ref={componentRef}>
             <Helmet>
                 <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -206,7 +179,7 @@ render() {
                             <div className="form-group signature">
                                 <p>Signature: ..................................... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date: ............................. </p>
                                 <br />
-                                <p className="smaller">Signature of Witnesses: <br /><br />(1) ..............................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /> (2) ............................. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                                <p className="smaller">Signature of Witnesses: <br /><br />(1) ..............................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /> (2) ............................. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                             </div>
                             <div className="form-group photographs">
                                 <p>Photographs to be attached as per the instructions given below:</p>
@@ -230,20 +203,19 @@ render() {
                         </div>
                     </form>
                 </div>
-                <button type="button" id="edit_button" onClick={this.EditJabtinama} style={{ marginTop: '20px' }}>
+                <button type="button" id="edit_button" onClick={handleEditClick} style={{ marginTop: '20px' }}>
                     Edit
                 </button>
-                <button type="button" onClick={this.downloadPDF} style={{ marginLeft: '50px' }}>
+                <button type="button" onClick={downloadPDF} style={{ marginLeft: '50px' }}>
                     Download PDF
                 </button>
                 <ReactToPrint
                     trigger={() => <button style={{ marginLeft: '400px' }}>Print Raajinama</button>}
-                    content={() => this.componentRef}
+                    content={() => componentRef.current}
                     documentTitle="Raajinama"
                 />
             </div>
         );
-    }
-}
+};
 
-export default RaajinamaForm;
+export default RajinamaForm;
