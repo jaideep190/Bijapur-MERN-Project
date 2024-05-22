@@ -48,63 +48,53 @@ const RajinamaInput = () => {
     setIsSubmitted(false);
   };
 
-    return (
-      <>
-        {!isSubmitted ? (
-          <div className="form-container">
-            <form onSubmit={handleSubmit} id="supurthinamaForm">
-              <h1>Mohkama Forest</h1>
-              <h3>Resignation (Raajinama)</h3>
-              <p>Based on the investigation conducted in my/our presence</p>
-              <div className="form-section">
-                <h2>Witness Details</h2>
-                <label className="form-label" htmlFor="name1">(1)</label>
-                <input className="form-input" type="text" id="name1" name="name1" placeholder="Name" value={formData.name1} onChange={handleChange} />
-                <input className="form-input" type="text" name="religion1" placeholder="Religion" value={formData.religion1} onChange={handleChange} />
-                <input className="form-input" type="text" name="caste1" placeholder="Caste" value={formData.caste1} onChange={handleChange} />
-              </div>
-              <div className="form-section">
-                <h2>Witness Details</h2>
-                <label className="form-label" htmlFor="name2">(2)</label>
-                <input className="form-input" type="text" id="name2" name="name2" placeholder="Name" value={formData.name2} onChange={handleChange} />
-                <input className="form-input" type="text" name="religion2" placeholder="Religion" value={formData.religion2} onChange={handleChange} />
-                <input className="form-input" type="text" name="caste2" placeholder="Caste" value={formData.caste2} onChange={handleChange} />
-              </div>
-              <div className="form-section">
-                <h2>Witness Details</h2>
-                <label className="form-label" htmlFor="name3">(3)</label>
-                <input className="form-input" type="text" id="name3" name="name3" placeholder="Name" value={formData.name3} onChange={handleChange} />
-                <input className="form-input" type="text" name="religion3" placeholder="Religion" value={formData.religion3} onChange={handleChange} />
-                <input className="form-input" type="text" name="caste3" placeholder="Caste" value={formData.caste3} onChange={handleChange} />
-              </div>
-              <div className="form-section">
-                <h2>Witness Details</h2>
-                <label className="form-label" htmlFor="name4">(4)</label>
-                <input className="form-input" type="text" id="name4" name="name4" placeholder="Name" value={formData.name4} onChange={handleChange} />
-                <input className="form-input" type="text" name="religion4" placeholder="Religion" value={formData.religion4} onChange={handleChange} />
-                <input className="form-input" type="text" name="caste4" placeholder="Caste" value={formData.caste4} onChange={handleChange} />
-              </div>
-              <div className="form-section">
-                <h2>Witness Details</h2>
-                <label className="form-label" htmlFor="name5">(5)</label>
-                <input className="form-input" type="text" id="name5" name="name5" placeholder="Name" value={formData.name5} onChange={handleChange} />
-                <input className="form-input" type="text" name="religion5" placeholder="Religion" value={formData.religion5} onChange={handleChange} />
-                <input className="form-input" type="text" name="caste5" placeholder="Caste" value={formData.caste5} onChange={handleChange} />
-              </div>
-              <div className="line"></div>
-              <div className="form-group">
-                <label className="form-label" htmlFor="forestCrimes">About Forest related Crimes</label>
-                <textarea className="form-input" id="forestCrimes" name="forestCrimes" rows="4" placeholder="Enter details about forest crimes..." value={formData.forestCrimes} onChange={handleChange}></textarea>
-              </div>
-              <input className="date-input" type="date" name="date" value={formData.date} onChange={handleChange} />
-              <button type="submit">Submit</button>
-            </form>
-          </div>
-        ) : (
-          <RajinamaForm formData={formData} handleEditClick={handleEditClick} />
-        )}
-      </>
-    );
+  return (
+    <>
+      {!isSubmitted ? (
+        <div className="form-container">
+          <form onSubmit={handleSubmit} id="rajinamaForm">
+            <h1>Rajinama Form</h1>
+            <div className="form-section">
+              <h2>Suspects Details</h2>
+              {[1, 2, 3, 4, 5].map((index) => (
+                <React.Fragment key={index}>
+                  <label className="form-label" htmlFor={`suspect${index}`}>Suspect {index}</label>
+                  <input className="form-input" type="text" id={`suspect${index}`} name={`suspect${index}`} value={formData[`suspect${index}`]} onChange={handleChange} required />
+                  <label className="form-label" htmlFor={`fatherName${index}`}>Father's Name {index}</label>
+                  <input className="form-input" type="text" id={`fatherName${index}`} name={`fatherName${index}`} value={formData[`fatherName${index}`]} onChange={handleChange} required />
+                  <label className="form-label" htmlFor={`caste${index}`}>Caste {index}</label>
+                  <input className="form-input" type="text" id={`caste${index}`} name={`caste${index}`} value={formData[`caste${index}`]} onChange={handleChange} required />
+                  <label className="form-label" htmlFor={`residence${index}`}>Residence {index}</label>
+                  <input className="form-input" type="text" id={`residence${index}`} name={`residence${index}`} value={formData[`residence${index}`]} onChange={handleChange} required />
+                </React.Fragment>
+              ))}
+            </div>
+            <div className="form-section">
+              <h2>Other Details</h2>
+              <label className="form-label" htmlFor="forestRelatedCrimes">Forest Related Crimes</label>
+              <textarea className="form-input" id="forestRelatedCrimes" name="forestRelatedCrimes" value={formData.forestRelatedCrimes} onChange={handleChange} required />
+              <label className="form-label" htmlFor="date">Date</label>
+              <input className="form-input" type="text" id="date" name="date" value={formData.date} onChange={handleChange} required />
+              <label className="form-label" htmlFor="month">Month</label>
+              <input className="form-input" type="text" id="month" name="month" value={formData.month} onChange={handleChange} required />
+              <label className="form-label" htmlFor="year">Year</label>
+              <input className="form-input" type="text" id="year" name="year" value={formData.year} onChange={handleChange} required />
+              <label className="form-label" htmlFor="witness1">Witness 1</label>
+              <input className="form-input" type="text" id="witness1" name="witness1" value={formData.witness1} onChange={handleChange} required />
+              <label className="form-label" htmlFor="witness2">Witness 2</label>
+              <input className="form-input" type="text" id="witness2" name="witness2" value={formData.witness2} onChange={handleChange} required />
+              <label className="form-label" htmlFor="investigationOfficer">Investigation Officer</label>
+              <input className="form-input" type="text" id="investigationOfficer" name="investigationOfficer" value={formData.investigationOfficer} onChange={handleChange} required />
+            </div>
+            <button className="form-button" onClick={handleSubmit} type="button">Show Form</button>
+            <button className="form-button" type="submit">Submit</button>
+          </form>
+        </div>
+      ) : (
+        <RajinamaForm formData={formData} handleEditClick={handleEditClick} /> // Pass handleEditClick function as props to RajinamaForm
+      )}
+    </>
+  );
 };
 
 export default RajinamaInput;

@@ -23,6 +23,7 @@ import ExistingPorNumbers from './components/ExistingPorNumbers.jsx';
 import SupurthinamaInput from './Forms/SupurthinamaInput.jsx';
 import JabtinamaInput from './Forms/JabtinamaInput.jsx';
 import RajinamaInput from './Forms/RajinamaInput.jsx';
+import PanchanamaInput from './Forms/PanchanamaInput.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,6 +37,8 @@ const router = createBrowserRouter(
         <Route path='/supurthinamaform' element={<SupurthinamaInput/>}/>
         <Route path='/jabtinamaform' element={<JabtinamaInput/>}/>
         <Route path='/rajinamaform' element={<RajinamaInput/>}/>
+        <Route path='/panchanamaform' element={<PanchanamaInput/>}/>
+
         <Route path='/existingpornumbers' element={<ExistingPorNumbers/>} />
       </Route>
       <Route path='*' element={<PageNotFound />} />

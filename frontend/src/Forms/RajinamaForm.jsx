@@ -1,221 +1,115 @@
-import React, { useRef } from 'react';
-import ReactToPrint from 'react-to-print';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
-import { Helmet } from 'react-helmet';
+import React from 'react';
+import '../styles/Rajinama.css';
 
-const RajinamaForm = ({ formData, handleEditClick }) => {
-    const componentRef = useRef(null);
+function RajinamaForm({ formData, handleEditClick }) {
+  const {
+    suspect1,
+    fatherName1,
+    caste1,
+    residence1,
+    suspect2,
+    fatherName2,
+    caste2,
+    residence2,
+    suspect3,
+    fatherName3,
+    caste3,
+    residence3,
+    suspect4,
+    fatherName4,
+    caste4,
+    residence4,
+    suspect5,
+    fatherName5,
+    caste5,
+    residence5,
+    forestRelatedCrimes,
+    date,
+    month,
+    year,
+    witness1,
+    witness2,
+    investigationOfficer,
+  } = formData;
 
-    const downloadPDF = () => {
-        const input = componentRef.current;
-        const scale = 3;
+  const handlePrintClick = () => {
+    window.print();
+  };
 
-        html2canvas(input, {
-            scale: scale,
-            useCORS: true,
-            allowTaint: true,
-            scrollX: 0,
-            scrollY: -window.scrollY,
-        })
-            .then((canvas) => {
-                const imgData = canvas.toDataURL('image/png', 1.0);
-                const pdf = new jsPDF('l', 'pt', [2480, 3508]);
-                const imgProps = pdf.getImageProperties(imgData);
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-                pdf.save('rajinama.pdf');
-            })
-            .catch(function (error) {
-                console.log('Error occurred:', error);
-            });
-    };
-
-    return (
-        <div ref={componentRef}>
-            <Helmet>
-                <meta charSet="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>Mohkama Forest</title>
-                <style>
-                    {`
-                        body {
-                            font-family: Arial, sans-serif;
-                            margin: 0;
-                            padding: 0;
-                        }
-
-                        .container {
-                            max-width: 800px;
-                            margin: 0 auto;
-                            padding: 20px;
-                        }
-
-                        h1 {
-                            text-align: center;
-                            text-decoration: underline;
-
-                        }
-
-                        h2 {
-                            text-align: center;
-                            text-decoration: underline;
-
-                        }
-
-                        h3 {
-                            text-align: center;
-                            text-decoration: underline;
-
-                        }
-
-                        .form-group {
-                            margin-bottom: 20px;
-                        }
-
-                        label {
-                            display: block;
-                            font-weight: bold;
-                            margin-bottom: 5px;
-                        }
-
-                        input[type="text"] {
-                            padding: 5px;
-                            margin-right: 10px;
-                        }
-
-                        ul, ol {
-                            padding-left: 20px;
-                        }
-
-                        p {
-                            margin: 5px 0;
-                        }
-
-                        .smaller {
-                            font-size: 1.0em;
-                        }
-
-                        .line {
-                            margin-bottom: 10px;
-                        }
-
-                        .signature {
-                            float: left;
-                        }
-
-                        .photographs {
-                            float: right;
-                            margin-top: -10px;
-                        }
-
-                        .clearfix::after {
-                            content: "";
-                            clear: both;
-                            display: table;
-                        }
-
-                        .body{
-                            font-size: 10px;
-                        }
-                    `}
-                </style>
-            </Helmet>
-
-            <div className="container">
-                <h1>Mohkama Forest</h1>
-                <h3>Resignation (Raajinama) </h3>
-                <p>Based on the investigation conducted in my/our presence</p>
-                <form>
-                    <div className="form-group">
-                        <label htmlFor="name1">(1)</label>
-                        <input type="text" id="name1" placeholder="Name" />
-                        <input type="text" placeholder="Religion" />
-                        <input type="text" placeholder="Caste" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="name2">(2)</label>
-                        <input type="text" id="name2" placeholder="Name" />
-                        <input type="text" placeholder="Religion" />
-                        <input type="text" placeholder="Caste" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="name3">(3)</label>
-                        <input type="text" id="name3" placeholder="Name" />
-                        <input type="text" placeholder="Religion" />
-                        <input type="text" placeholder="Caste" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="name4">(4)</label>
-                        <input type="text" id="name4" placeholder="Name" />
-                        <input type="text" placeholder="Religion" />
-                        <input type="text" placeholder="Caste" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="name5">(5)</label>
-                        <input type="text" id="name5" placeholder="Name" />
-                        <input type="text" placeholder="Religion" />
-                        <input type="text" placeholder="Caste" />
-                    </div>
-                    <br />
-                    <div className="line"></div>
-                    <div className="form-group">
-                        <p>About Forest related Crimes, <span style={{ whiteSpace: 'pre-wrap' }}>i.e., ______________________________________________________________ <br />
-                        ______________________________________________________________________________________
-                        </span> is suspected of doing.</p>
-                        <br />
-                    </div>
-                    <div className="form-group">
-                        <p>And I want / we want that the guilty plea for the accused should be made at the rate of Rs. 68 of the Indian Forest Act, 1927 AD, which is still in force.</p>
-                        <br />
-                        <p>Further, if / If this certificate is false, I will be subject to punishment under the law and legal action will be taken / If it is found that the certificate is false,                            a fine of Rs. 500/- will be imposed and no claim of any kind will be entertained for reimbursement or payment of dues under this program.</p>
-                            <br />
-                            <p>I / If I do any such work, I will be subject to legal action / If any Forest Officer or any other Officer finds that this information is false, strict legal action will be taken against me.</p>
-                            <p>It is also stated that the Gram Panchayat has the right / Village (or Nayab Tehsildar) to cancel this certificate and take any necessary action.</p>
-                        </div>
-                        <br />
-                        <div className="clearfix">
-                            <div className="form-group signature">
-                                <p>Signature: ..................................... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date: ............................. </p>
-                                <br />
-                                <p className="smaller">Signature of Witnesses: <br /><br />(1) ..............................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /> (2) ............................. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                            </div>
-                            <div className="form-group photographs">
-                                <p>Photographs to be attached as per the instructions given below:</p>
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                            </div>
-                        </div>
-                        <div className="form-group">
-                            <h2>Certificate to be attached</h2>
-                            <p>I certify that the above-mentioned persons that is the suspected persons presented this statement to me with their consent.</p>
-                            <br />
-                            <p> Date: ........................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Year: .......................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature: ................................</p>
-                            <ul>
-                                <li>In relation to the cases of Chhattisgarh, the words taken inside the brackets should be deleted.</li>
-                                <li>If no property has been confiscated then the words written inside should be struck out.</li>
-                                <li>which includes the produce from government forests.</li>
-                            </ul>
-                        </div>
-                    </form>
-                </div>
-                <button type="button" id="edit_button" onClick={handleEditClick} style={{ marginTop: '20px' }}>
-                    Edit
-                </button>
-                <button type="button" onClick={downloadPDF} style={{ marginLeft: '50px' }}>
-                    Download PDF
-                </button>
-                <ReactToPrint
-                    trigger={() => <button style={{ marginLeft: '400px' }}>Print Raajinama</button>}
-                    content={() => componentRef.current}
-                    documentTitle="Raajinama"
-                />
+  return (
+    <>
+      <head>
+        <title>Rajinama</title>
+      </head>
+      <body className='rajinama-body'>
+        <div className="rajinama-container">
+          <div className="rajinama-header">
+            <div className="rajinama-title">
+              <h1 className="rajinama-heading">Mohkamma Forest</h1>
+              <h1 className="rajinama-heading">Rajinama Form</h1>
             </div>
-        );
-};
+          </div>
+          <div className="rajinama-content">
+            <div className="rajinama-section">
+              <p className="rajinama-text">Based on the investigation in our presence</p>
+              <p className="rajinama-text">1) {suspect1} son of {fatherName1} caste {caste1} resident of {residence1}</p>
+              <p className="rajinama-text">2) {suspect2} son of {fatherName2} caste {caste2} resident of {residence2}</p>
+              <p className="rajinama-text">3) {suspect3} son of {fatherName3} caste {caste3} resident of {residence3}</p>
+              <p className="rajinama-text">4) {suspect4} son of {fatherName4} caste {caste4} resident of {residence4}</p>
+              <p className="rajinama-text">5) {suspect5} son of {fatherName5} caste {caste5} resident of {residence5}</p>
+              <p className="rajinama-text">have been suspected to commit the forest related crime, i.e. {forestRelatedCrimes}</p>
+            </div>
+            <div className="rajinama-details">
+              I/We want the offense to be compounded in accordance with Rule 68 of Section 68 of the Hindustan Forest Act, 1927 (as applicable).<br />
+              Therefore, I/we undertake to pay compensation within the stipulated period from the date of this petition, the amount of which shall not 
+              exceed Rs 500/- per person as determined by the Divisional Forest Officer or any other officer of the Forest Department who is authorized 
+              to compound such offence.<br />
+              I/We undertake to pay the amount determined by the Divisional Forest Officer or any other officer authorized in this regard, as the value of 
+              the property seized and liable to confiscation.<br />
+              It is decided that upon payment of the aforementioned amount, no further action will be taken against me/us (or the aforementioned property).<br />
+            </div>
+            <div className="rajinama-date">
+              Date: {date} Month:{month}, year: {year}
+            </div>
+            <br />
+            <div className="rajinama-signatures">
+              <div className="rajinama-witnesses">
+                Signatures of witness'<br />
+                {witness1}<br />
+                {witness2}<br />
+              </div>
+              <div className="rajinama-suspects">
+                Signatures of the suspects:<br />
+                {suspect1}<br />
+                {suspect2}<br />
+                {suspect3}<br />
+                {suspect4}<br />
+                {suspect5}<br />
+              </div>
+            </div>
+            <div className="rajinama-certificate">
+              <div className="rajinama-certificate-title">
+                <h2>Certificate of Verification</h2>
+              </div>
+              <div className="rajinama-certificate-content">
+                <p className="rajinama-text">I hereby certify that the suspects have presented this agreement willingly in my presence.</p>
+                <p className="rajinama-text">Date: {date}, Month:{month}, Year:{year}, Signature : {investigationOfficer}</p>
+              </div>
+            </div>
+            <div className="rajinama-footer">
+              <ul>
+                <li>In relation to the cases of Chhattisgarh, the words taken inside the brackets should be deleted.</li>
+                <li>If no property has been confiscated then the words written inside should be struck out.</li>
+                <li>which includes the produce from government forests.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <button onClick={handleEditClick} className="edit-button">Edit</button> {/* Edit button to trigger handleEditClick function */}
+        <button onClick={handlePrintClick} className="print-button">Print Form</button> {/* Button to trigger printing the form */}
+      </body>
+    </>
+  )
+}
 
 export default RajinamaForm;

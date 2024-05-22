@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offenders' Information</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        #rajinama-body {
+            margin: 0;
+            padding: 20px;
+        }
+        .rajinama-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .text-left {
+            text-align: left;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body id="rajinama-body">
+    <div class="rajinama-container">
+        <h2 class="text-center">Offenders' Information</h2>
+        <p class="text-right">Forest Office: {ForestOfficePlaceholder} Date: {DatePlaceholder}</p>
+        <table>
+            <tr>
+                <th class="text-center">Serial No.</th>
+                <th class="text-left">Name of Offender</th>
+                <th class="text-center">Father's Name</th>
+                <th class="text-center">Age</th>
+                <th class="text-left">Address</th>
+                <th class="text-left">Type of Forest Offense</th>
+            </tr>
+            <tr>
+                <td>1.</td>
+                <td>{NamePlaceholder}</td>
+                <td>{FatherNamePlaceholder}</td>
+                <td>{AgePlaceholder}</td>
+                <td>{AddressPlaceholder}</td>
+                <td>{OffensePlaceholder}</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </table>
+        <p class="text-left">This report contains the names of the offenders who have been caught while illegally taking forest products. Their detailed records will be prepared later.</p>
+        <h3 class="text-center">Conditions for Compromise</h3>
+        <ol class="text-left">
+            <li>{Condition1Placeholder}</li>
+            <li>{Condition2Placeholder}</li>
+            <!-- Add more conditions as needed -->
+        </ol>
+        <p class="text-right">Date: {DatePlaceholder}</p>
+        <p class="text-left">Signatures:</p>
+        <ol class="text-left">
+            <li>{Signature1Placeholder}</li>
+            <li>{Signature2Placeholder}</li>
+            <li>{Signature3Placeholder}</li>
+            <!-- Add more signature placeholders as needed -->
+        </ol>
+    </div>
+</body>
+</html>
