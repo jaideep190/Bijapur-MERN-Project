@@ -89,6 +89,7 @@ const RajinamaInput = () => {
                 <textarea className="form-input" id="forestCrimes" name="forestCrimes" rows="4" placeholder="Enter details about forest crimes..." value={formData.forestCrimes} onChange={handleChange}></textarea>
               </div>
               <input className="date-input" type="date" name="date" value={formData.date} onChange={handleChange} />
+              <button className="form-button" onClick={handleSubmit} type="button">Show Form</button>
               <button type="submit">Submit</button>
             </form>
           </div>
