@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import RemandForm from './RemandForm';
 
 const RemandInput = () => {
+  const [offenderCount, setOffenderCount] = useState(1); // Default to one offender
   const [formData, setFormData] = useState({
     caseName: '',
     district: '',
@@ -12,32 +13,34 @@ const RemandInput = () => {
     incidentPlace: '',
     issueDate: '',
     complainantName: '',
-    accused1Name: '',
-    accused1FatherName: '',
-    accused1Caste: '',
-    accused1Age: '',
-    accused1Village: '',
-    accused1Gram: '',
-    accused1Tehsil: '',
-    accused1District: '',
-    accused1Pin: '',
-    accused1ArrestDate: '',
-    accused1ArrestTime: '',
-    // Add similar fields for accused 2-5
+    offenders: [{ name: '', fatherName: '', caste: '', age: '', village: '', gram: '', tehsil: '', district: '', pin: '', arrestDate: '', arrestTime: '' }],
     preRemandDate: '',
     finalRemandDate: '',
     remark: '',
     finalReportSubmissionDate: '',
     magistrateName: '',
-    magistrateDistrict: ''
+    magistrateDistrict: '',
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const [field, index] = name.split('-');
+    if (index === undefined) {
+      setFormData({ ...formData, [name]: value });
+    } else {
+      const newOffenders = [...formData.offenders];
+      newOffenders[parseInt(index)][field] = value;
+      setFormData({ ...formData, offenders: newOffenders });
+    }
+  };
+
+  const handleOffenderCountChange = (e) => {
+    const count = parseInt(e.target.value, 10);
+    setOffenderCount(count);
+    const newOffenders = Array.from({ length: count }, () => ({ name: '', fatherName: '', caste: '', age: '', village: '', gram: '', tehsil: '', district: '', pin: '', arrestDate: '', arrestTime: '' }));
+    setFormData({ ...formData, offenders: newOffenders });
   };
 
   const handleSubmit = (e) => {
@@ -46,7 +49,6 @@ const RemandInput = () => {
   };
 
   const handleEditClick = () => {
-    setIsEditing(true);
     setIsSubmitted(false);
   };
 
@@ -87,41 +89,48 @@ const RemandInput = () => {
             </div>
 
             <div className="form-section">
-              <h2>Accused Details</h2>
-              <label className="form-label" htmlFor="accused1Name">Accused 1 Name</label>
-              <input className="form-input" type="text" id="accused1Name" name="accused1Name" value={formData.accused1Name} onChange={handleChange} required />
+              <h2>Offender Details</h2>
+              <label className="form-label" htmlFor="offenderCount">Number of Offenders</label>
+              <input className="form-input" type="number" id="offenderCount" name="offenderCount" value={offenderCount} onChange={handleOffenderCountChange} min="1" required />
 
-              <label className="form-label" htmlFor="accused1FatherName">Accused 1 Father's Name</label>
-              <input className="form-input" type="text" id="accused1FatherName" name="accused1FatherName" value={formData.accused1FatherName} onChange={handleChange} required />
-
-              <label className="form-label" htmlFor="accused1Caste">Accused 1 Caste</label>
-              <input className="form-input" type="text" id="accused1Caste" name="accused1Caste" value={formData.accused1Caste} onChange={handleChange} required />
-
-              <label className="form-label" htmlFor="accused1Age">Accused 1 Age</label>
-              <input className="form-input" type="text" id="accused1Age" name="accused1Age" value={formData.accused1Age} onChange={handleChange} required />
-
-              <label className="form-label" htmlFor="accused1Village">Accused 1 Village</label>
-              <input className="form-input" type="text" id="accused1Village" name="accused1Village" value={formData.accused1Village} onChange={handleChange} required />
-
-              <label className="form-label" htmlFor="accused1Gram">Accused 1 Gram</label>
-              <input className="form-input" type="text" id="accused1Gram" name="accused1Gram" value={formData.accused1Gram} onChange={handleChange} required />
-
-              <label className="form-label" htmlFor="accused1Tehsil">Accused 1 Tehsil</label>
-              <input className="form-input" type="text" id="accused1Tehsil" name="accused1Tehsil" value={formData.accused1Tehsil} onChange={handleChange} required />
-
-              <label className="form-label" htmlFor="accused1District">Accused 1 District</label>
-              <input className="form-input" type="text" id="accused1District" name="accused1District" value={formData.accused1District} onChange={handleChange} required />
-
-              <label className="form-label" htmlFor="accused1Pin">Accused 1 Pin</label>
-              <input className="form-input" type="text" id="accused1Pin" name="accused1Pin" value={formData.accused1Pin} onChange={handleChange} required />
-
-              <label className="form-label" htmlFor="accused1ArrestDate">Accused 1 Arrest Date</label>
-              <input className="form-input" type="text" id="accused1ArrestDate" name="accused1ArrestDate" value={formData.accused1ArrestDate} onChange={handleChange} required />
-
-              <label className="form-label" htmlFor="accused1ArrestTime">Accused 1 Arrest Time</label>
-              <input className="form-input" type="text" id="accused1ArrestTime" name="accused1ArrestTime" value={formData.accused1ArrestTime} onChange={handleChange} required />
-
-              {/* Add similar fields for accused 2-5 */}
+              <div className="form-section">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Serial No.</th>
+                      <th>Name</th>
+                      <th>Father's Name</th>
+                      <th>Caste</th>
+                      <th>Age</th>
+                      <th>Village</th>
+                      <th>Gram</th>
+                      <th>Tehsil</th>
+                      <th>District</th>
+                      <th>Pin</th>
+                      <th>Arrest Date</th>
+                      <th>Arrest Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {formData.offenders.map((offender, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td><input className="form-input" type="text" name={`name-${index}`} value={offender.name} onChange={handleChange} required /></td>
+                        <td><input className="form-input" type="text" name={`fatherName-${index}`} value={offender.fatherName} onChange={handleChange} required /></td>
+                        <td><input className="form-input" type="text" name={`caste-${index}`} value={offender.caste} onChange={handleChange} required /></td>
+                        <td><input className="form-input" type="text" name={`age-${index}`} value={offender.age} onChange={handleChange} required /></td>
+                        <td><input className="form-input" type="text" name={`village-${index}`} value={offender.village} onChange={handleChange} required /></td>
+                        <td><input className="form-input" type="text" name={`gram-${index}`} value={offender.gram} onChange={handleChange} required /></td>
+                        <td><input className="form-input" type="text" name={`tehsil-${index}`} value={offender.tehsil} onChange={handleChange} required /></td>
+                        <td><input className="form-input" type="text" name={`district-${index}`} value={offender.district} onChange={handleChange} required /></td>
+                        <td><input className="form-input" type="text" name={`pin-${index}`} value={offender.pin} onChange={handleChange} required /></td>
+                        <td><input className="form-input" type="text" name={`arrestDate-${index}`} value={offender.arrestDate} onChange={handleChange} required /></td>
+                        <td><input className="form-input" type="text" name={`arrestTime-${index}`} value={offender.arrestTime} onChange={handleChange} required /></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <div className="form-section">
@@ -153,10 +162,11 @@ const RemandInput = () => {
           </form>
         </div>
       ) : (
-        <RemandForm formData={formData} handleEditClick={handleEditClick} /> // Pass handleEditClick function as props to RemandForm
+        <RemandForm formData={formData} handleEditClick={handleEditClick} />
       )}
     </>
   );
 };
 
 export default RemandInput;
+
