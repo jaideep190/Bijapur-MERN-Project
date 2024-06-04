@@ -5,7 +5,7 @@ import JabtinamaForm from './JabtinamaForm';
 
 const JabtinamaInput = () => {
     const [formData, setFormData] = useState({
-        caseNumber: '',
+        porNumber: '',
         date: '',
         placeAndTime: '',
         nameAndPositionOffender: '',
@@ -44,7 +44,7 @@ const JabtinamaInput = () => {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/saveJabtinama', formData);
+            const response = await axios.post('http://localhost:5000/api/jabtinama/create', formData);
             console.log(response);
             alert(response.data.msg);
             if (response.data.msg === 'User Created!') {

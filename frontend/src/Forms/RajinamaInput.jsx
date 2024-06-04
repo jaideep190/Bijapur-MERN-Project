@@ -3,6 +3,7 @@ import RajinamaForm from './RajinamaForm';
 
 const RajinamaInput = () => {
   const [formData, setFormData] = useState({
+    porNumber: '',
     suspect1: '',
     fatherName1: '',
     caste1: '',
@@ -55,6 +56,8 @@ const RajinamaInput = () => {
           <form onSubmit={handleSubmit} id="rajinamaForm">
             <h1>Rajinama Form</h1>
             <div className="form-section">
+              <label className="form-label" htmlFor="porNumber">POR Number</label>
+              <input className="form-input" type="text" id="porNumber" name="porNumber" value={formData.porNumber} onChange={handleChange} required />
               <h2>Suspects Details</h2>
               {[1, 2, 3, 4, 5].map((index) => (
                 <React.Fragment key={index}>
