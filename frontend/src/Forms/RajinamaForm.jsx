@@ -1,115 +1,149 @@
-import React from 'react';
-import '../styles/Rajinama.css';
+import React, { useState } from 'react';
+import RajinamaForm from './RajinamaForm';
 
-function RajinamaForm({ formData, handleEditClick }) {
-  const {
-    suspect1,
-    fatherName1,
-    caste1,
-    residence1,
-    suspect2,
-    fatherName2,
-    caste2,
-    residence2,
-    suspect3,
-    fatherName3,
-    caste3,
-    residence3,
-    suspect4,
-    fatherName4,
-    caste4,
-    residence4,
-    suspect5,
-    fatherName5,
-    caste5,
-    residence5,
-    forestRelatedCrimes,
-    date,
-    month,
-    year,
-    witness1,
-    witness2,
-    investigationOfficer,
-  } = formData;
+const RajinamaInput = () => {
+  const [formData, setFormData] = useState({
+    suspectCount: 5,
+    forestRelatedCrimes: '',
+    date: '',
+    month: '',
+    year: '',
+    witness1: '',
+    witness2: '',
+    investigationOfficer: '',
+  });
 
-  const handlePrintClick = () => {
-    window.print();
+  const [suspects, setSuspects] = useState(Array.from({ length: formData.suspectCount }, () => ({
+    name: '',
+    fatherName: '',
+    caste: '',
+    residence: ''
+  })));
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSuspectChange = (index, e) => {
+    const { name, value } = e.target;
+    const newSuspects = [...suspects];
+    newSuspects[index] = { ...newSuspects[index], [name]: value };
+    setSuspects(newSuspects);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
+
+  const handleEditClick = () => {
+    setIsSubmitted(false);
+  };
+
+  const handleSuspectCountChange = (e) => {
+    const count = parseInt(e.target.value);
+    setFormData({ ...formData, suspectCount: count });
+    setSuspects(Array.from({ length: count }, () => ({
+      name: '',
+      fatherName: '',
+      caste: '',
+      residence: ''
+    })));
   };
 
   return (
     <>
-      <head>
-        <title>Rajinama</title>
-      </head>
-      <body className='rajinama-body'>
-        <div className="rajinama-container">
-          <div className="rajinama-header">
-            <div className="rajinama-title">
-              <h1 className="rajinama-heading">Mohkamma Forest</h1>
-              <h1 className="rajinama-heading">Rajinama Form</h1>
+      {!isSubmitted ? (
+        <div className="form-container">
+          <form onSubmit={handleSubmit} id="rajinamaForm">
+            <h1>Rajinama Form</h1>
+            <div className="form-section">
+              <label className="form-label" htmlFor="suspectCount">Number of Suspects</label>
+              <input
+                className="form-input"
+                type="number"
+                id="suspectCount"
+                name="suspectCount"
+                value={formData.suspectCount}
+                onChange={handleSuspectCountChange}
+                min="1"
+                required
+              />
+              <h2>Suspects Details</h2>
+              {suspects.map((suspect, index) => (
+                <React.Fragment key={index}>
+                  <label className="form-label" htmlFor={`name${index}`}>Suspect {index + 1}</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    id={`name${index}`}
+                    name="name"
+                    value={suspect.name}
+                    onChange={(e) => handleSuspectChange(index, e)}
+                    required
+                  />
+                  <label className="form-label" htmlFor={`fatherName${index}`}>Father's Name {index + 1}</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    id={`fatherName${index}`}
+                    name="fatherName"
+                    value={suspect.fatherName}
+                    onChange={(e) => handleSuspectChange(index, e)}
+                    required
+                  />
+                  <label className="form-label" htmlFor={`caste${index}`}>Caste {index + 1}</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    id={`caste${index}`}
+                    name="caste"
+                    value={suspect.caste}
+                    onChange={(e) => handleSuspectChange(index, e)}
+                    required
+                  />
+                  <label className="form-label" htmlFor={`residence${index}`}>Residence {index + 1}</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    id={`residence${index}`}
+                    name="residence"q
+                    value={suspect.residence}
+                    onChange={(e) => handleSuspectChange(index, e)}
+                    required
+                  />
+                </React.Fragment>
+              ))}
+            </div>  
+            <div className="form-section">
+              <h2>Other Details</h2>
+              <label className="form-label" htmlFor="forestRelatedCrimes">Forest Related Crimes</label>
+              <textarea className="form-input" id="forestRelatedCrimes" name="forestRelatedCrimes" value={formData.forestRelatedCrimes} onChange={handleChange} required />
+              <label className="form-label" htmlFor="date">Date</label>
+              <input className="form-input" type="text" id="date" name="date" value={formData.date} onChange={handleChange} required />
+              <label className="form-label" htmlFor="month">Month</label>
+              <input className="form-input" type="text" id="month" name="month" value={formData.month} onChange={handleChange} required />
+              <label className="form-label" htmlFor="year">Year</label>
+              <input className="form-input" type="text" id="year" name="year" value={formData.year} onChange={handleChange} required />
+              <label className="form-label" htmlFor="witness1">Witness 1</label>
+              <input className="form-input" type="text" id="witness1" name="witness1" value={formData.witness1} onChange={handleChange} required />
+              <label className="form-label" htmlFor="witness2">Witness 2</label>
+              <input className="form-input" type="text" id="witness2" name="witness2" value={formData.witness2} onChange={handleChange} required />
+              <label className="form-label" htmlFor="investigationOfficer">Investigation Officer</label>
+              <input className="form-input" type="text" id="investigationOfficer" name="investigationOfficer" value={formData.investigationOfficer} onChange={handleChange} required />
             </div>
-          </div>
-          <div className="rajinama-content">
-            <div className="rajinama-section">
-              <p className="rajinama-text">Based on the investigation in our presence</p>
-              <p className="rajinama-text">1) {suspect1} son of {fatherName1} caste {caste1} resident of {residence1}</p>
-              <p className="rajinama-text">2) {suspect2} son of {fatherName2} caste {caste2} resident of {residence2}</p>
-              <p className="rajinama-text">3) {suspect3} son of {fatherName3} caste {caste3} resident of {residence3}</p>
-              <p className="rajinama-text">4) {suspect4} son of {fatherName4} caste {caste4} resident of {residence4}</p>
-              <p className="rajinama-text">5) {suspect5} son of {fatherName5} caste {caste5} resident of {residence5}</p>
-              <p className="rajinama-text">have been suspected to commit the forest related crime, i.e. {forestRelatedCrimes}</p>
-            </div>
-            <div className="rajinama-details">
-              I/We want the offense to be compounded in accordance with Rule 68 of Section 68 of the Hindustan Forest Act, 1927 (as applicable).<br />
-              Therefore, I/we undertake to pay compensation within the stipulated period from the date of this petition, the amount of which shall not 
-              exceed Rs 500/- per person as determined by the Divisional Forest Officer or any other officer of the Forest Department who is authorized 
-              to compound such offence.<br />
-              I/We undertake to pay the amount determined by the Divisional Forest Officer or any other officer authorized in this regard, as the value of 
-              the property seized and liable to confiscation.<br />
-              It is decided that upon payment of the aforementioned amount, no further action will be taken against me/us (or the aforementioned property).<br />
-            </div>
-            <div className="rajinama-date">
-              Date: {date} Month:{month}, year: {year}
-            </div>
-            <br />
-            <div className="rajinama-signatures">
-              <div className="rajinama-witnesses">
-                Signatures of witness'<br />
-                {witness1}<br />
-                {witness2}<br />
-              </div>
-              <div className="rajinama-suspects">
-                Signatures of the suspects:<br />
-                {suspect1}<br />
-                {suspect2}<br />
-                {suspect3}<br />
-                {suspect4}<br />
-                {suspect5}<br />
-              </div>
-            </div>
-            <div className="rajinama-certificate">
-              <div className="rajinama-certificate-title">
-                <h2>Certificate of Verification</h2>
-              </div>
-              <div className="rajinama-certificate-content">
-                <p className="rajinama-text">I hereby certify that the suspects have presented this agreement willingly in my presence.</p>
-                <p className="rajinama-text">Date: {date}, Month:{month}, Year:{year}, Signature : {investigationOfficer}</p>
-              </div>
-            </div>
-            <div className="rajinama-footer">
-              <ul>
-                <li>In relation to the cases of Chhattisgarh, the words taken inside the brackets should be deleted.</li>
-                <li>If no property has been confiscated then the words written inside should be struck out.</li>
-                <li>which includes the produce from government forests.</li>
-              </ul>
-            </div>
-          </div>
+            <button className="form-button" onClick={() => setIsSubmitted(true)} type="button">Show Form</button>
+            <button className="form-button" type="submit">Submit</button>
+          </form>
         </div>
-        <button onClick={handleEditClick} className="edit-button">Edit</button> {/* Edit button to trigger handleEditClick function */}
-        <button onClick={handlePrintClick} className="print-button">Print Form</button> {/* Button to trigger printing the form */}
-      </body>
+      ) : (
+        <RajinamaForm formData={formData} suspects={suspects} handleEditClick={handleEditClick} />
+      )}
     </>
-  )
-}
+  );
+};
 
-export default RajinamaForm;
+export default RajinamaInput;

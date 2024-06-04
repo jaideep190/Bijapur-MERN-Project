@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remand Form</title>
+    <link rel="stylesheet" href="../styles/RemandForm.css">
+</head>
+<body id="remand-body">
+    <div class="remand-container">
+        <div class="remand-header">
+            <h1 class="remand-heading">Remand Form</h1>
+        </div>
+        <div class="remand-content">
+            <div class="remand-details">
+                1. Name of Case: - {caseName}, District: - {district}<br>
+                2. POR No. {caseNo} dt. {caseDate} under - Indian Penal Code (Section) Act 1972<br>
+                Sections {sections}<br>
+                3. Date of Incident: - {incidentDate}<br>
+                4. Place of Incident: - {incidentplace}<br>
+                5. Date of Issue of Summons: - {issueDate}<br>
+                6. Name of Complainant: - {complainantName}<br>
+                7. Name of Accused:
+                <ul class="remand-list">
+                    <li> {accused1Name} son of {accused1FatherName} Caste {accused1Caste}, age {accused1Age}, Vill/Ward - {accused1Village}, Gram - {accused1Gram}, Tehsil - {accused1Tehsil}, District - {accused1District} (C.G.) Pin - {accused1Pin}</li>
+                </ul>
+                8. Date and Time of Arrest:
+                <ul class="remand-list">
+                    <li>(1) {accused1Name} dt. {accused1ArrestDate} Time {accused1ArrestTime}</li>
+                </ul>
+                9. Pre-Remand: - {pre-remandDate}<br>
+                10. Final Remand: - {finalRemandDate}<br>
+                11. Remark: - {remark}<br>
+            </div>
+            <div class="remand-footer">
+                Sir,<br>
+                It is clear that, for question no. 1, para- 2 of section 7 is not applicable, so the question arises. Regarding the same, under POR Case no {caseNo} dated {caseDate} under the Indian Penal Code (Section) Act 1972, sections {sections} have been invoked against them. Appearances are necessary in this regard. The final report will be submitted by {finalReportSubmissionDate} after collecting evidence.
+            </div>
+            <div class="signature">
+                <br><br><br>
+                (Stamp)<br>
+                Judicial Magistrate First Class<br>
+                {magistrateName}<br>
+                District - {magistrateDistrict}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
