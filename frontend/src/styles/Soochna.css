@@ -1,0 +1,85 @@
+#soochna-body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+}
+
+.soochna-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.soochna-header {
+    text-align: center;
+}
+
+.soochna-title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.soochna-content {
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.soochna-content p {
+    margin: 0;
+    display: inline;
+}
+
+.soochna-details {
+    display: inline-block;
+    width: auto;
+    border-bottom: 1px dotted #000;
+    margin: 0 2px;
+    white-space: nowrap;
+}
+
+.soochna-points {
+    margin-top: 20px;
+}
+
+.soochna-point {
+    margin-bottom: 10px;
+}
+
+.soochna-signatures {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.soochna-signature-block {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.soochna-signature {
+    margin-top: 5px;
+    display: inline-block;
+    width: 250px;
+    border-top: 1px solid #000;
+}
+
+.witness-signature {
+    width: 45%;
+}
+
+.range-officer-signature {
+    width: 45%;
+}
+
+@media print {
+    .soochna-container {
+        box-shadow: none;
+        padding: 0;
+    }
+}

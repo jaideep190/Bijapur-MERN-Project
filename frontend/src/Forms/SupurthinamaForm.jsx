@@ -10,9 +10,6 @@ function SupurthinamaForm({ formData, handleEditClick }) { // Receive formData a
   
   return (
     <>
-    <head>
-        <title>Supurthinama</title>
-    </head>
     <body className='supurthinama-body'>
         <div className="supurthinama-container">
             <h1 className="supurthinama-heading">Mohkama Forest</h1>
@@ -44,9 +41,9 @@ function SupurthinamaForm({ formData, handleEditClick }) { // Receive formData a
                 </div>
             </div>        
         </div>
-        <button onClick={handleEditClick} className="edit-button">Edit</button> {/* Edit button to trigger handleEditClick function */}
-        <button onClick={handlePrintClick} className="print-button">Print Form</button> {/* Button to trigger printing the form */}
     </body>
+    <button onClick={handleEditClick} className="edit-button">Edit</button> {/* Edit button to trigger handleEditClick function */}
+    <button onClick={handlePrintClick} className="print-button">Print Form</button> {/* Button to trigger printing the form */}
     </>
   )
 }

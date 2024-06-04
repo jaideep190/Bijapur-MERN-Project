@@ -24,6 +24,9 @@ import SupurthinamaInput from './Forms/SupurthinamaInput.jsx';
 import JabtinamaInput from './Forms/JabtinamaInput.jsx';
 import RajinamaInput from './Forms/RajinamaInput.jsx';
 import PanchanamaInput from './Forms/PanchanamaInput.jsx';
+import SoochnaInput from './Forms/SoochnaInput.jsx';
+import RemandInput from './Forms/RemandInput.jsx';
+import GiraftariInput from './Forms/GiraftariInput.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,8 +41,10 @@ const router = createBrowserRouter(
         <Route path='/jabtinamaform' element={<JabtinamaInput/>}/>
         <Route path='/rajinamaform' element={<RajinamaInput/>}/>
         <Route path='/panchanamaform' element={<PanchanamaInput/>}/>
-
+        <Route path='/soochnapatrh' element={<SoochnaInput/>}/>
         <Route path='/existingpornumbers' element={<ExistingPorNumbers/>} />
+        <Route path='/remandform' element={<RemandInput/>} />
+        <Route path='/giraftariform' element={<GiraftariInput/>} />
       </Route>
       <Route path='*' element={<PageNotFound />} />
     </Route>

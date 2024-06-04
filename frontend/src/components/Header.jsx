@@ -55,6 +55,15 @@ const Header = () => {
                     <LinkContainer to='/panchanamaform'>
                       <NavDropdown.Item>Panchanama Form</NavDropdown.Item>
                     </LinkContainer>
+                    <LinkContainer to='/soochnapatrh'>
+                      <NavDropdown.Item>Soochna Patrh</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to='/remandform'>
+                      <NavDropdown.Item>Remand Form</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to='/giraftariform'>
+                      <NavDropdown.Item>Giraftari Form</NavDropdown.Item>
+                    </LinkContainer>
                   </NavDropdown>
                   <LinkContainer to='/existingpornumbers'>
                     <Nav.Link>Crime Details</Nav.Link>

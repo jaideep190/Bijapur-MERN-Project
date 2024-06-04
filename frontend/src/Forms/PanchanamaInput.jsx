@@ -107,7 +107,6 @@ const PanchanamaInput = () => {
                 </ol>
               </div>
               <button className="form-button" onClick={handleSubmit} type="button">Show Form</button>
-
               <button className="form-button" type="submit">Submit</button>
             </div>
           </form>
