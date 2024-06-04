@@ -4,9 +4,8 @@ import '../styles/RemandForm.css';
 function RemandForm({ formData, handleEditClick }) {
   const {
     caseName, district, caseNo, caseDate, sections, incidentDate, incidentPlace,
-    issueDate, complainantName, accused1Name, accused1FatherName, accused1Caste, accused1Age,
-    accused1Village, accused1Gram, accused1Tehsil, accused1District, accused1Pin, accused1ArrestDate,
-    accused1ArrestTime, preRemandDate, finalRemandDate, remark, finalReportSubmissionDate,
+    issueDate, complainantName, offenders,
+    preRemandDate, finalRemandDate, remark, finalReportSubmissionDate,
     magistrateName, magistrateDistrict
   } = formData;
 
@@ -32,13 +31,19 @@ function RemandForm({ formData, handleEditClick }) {
               6. Name of Complainant: - {complainantName}<br />
               7. Name of Accused:
               <ul className="remand-list">
-                <li>{accused1Name} son of {accused1FatherName} Caste {accused1Caste}, age {accused1Age}, Vill/Ward - {accused1Village}, Gram - {accused1Gram}, Tehsil - {accused1Tehsil}, District - {accused1District} (C.G.) Pin - {accused1Pin}</li>
-                {/* Add similar fields for accused 2-5 */}
+                {offenders.map((offender, index) => (
+                  <li key={index}>
+                    {offender.name} son of {offender.fatherName}, Caste {offender.caste}, age {offender.age}, Vill/Ward - {offender.village}, Gram - {offender.gram}, Tehsil - {offender.tehsil}, District - {offender.district} (C.G.) Pin - {offender.pin}
+                  </li>
+                ))}
               </ul>
               8. Date and Time of Arrest:
               <ul className="remand-list">
-                <li>(1) {accused1Name} dt. {accused1ArrestDate} Time {accused1ArrestTime}</li>
-                {/* Add similar fields for accused 2-5 */}
+                {offenders.map((offender, index) => (
+                  <li key={index}>
+                    ({index + 1}) {offender.name} dt. {offender.arrestDate} Time {offender.arrestTime}
+                  </li>
+                ))}
               </ul>
               9. Pre-Remand: - {preRemandDate}<br />
               10. Final Remand: - {finalRemandDate}<br />
@@ -65,3 +70,4 @@ function RemandForm({ formData, handleEditClick }) {
 }
 
 export default RemandForm;
+
