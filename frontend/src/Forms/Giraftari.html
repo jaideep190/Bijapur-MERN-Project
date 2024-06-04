@@ -7,76 +7,76 @@
     <link rel="stylesheet" href="Giraftari.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
+    <div class="giraftari-container">
+        <div class="giraftari-header">
             <span>M</span> <span>72</span>
         </div>
-        <div class="title">
+        <div class="giraftari-title">
             <h1>Arrest Warrant</h1>
         </div>
-        <div class="section">
+        <div class="giraftari-section" id="police-station-section">
             <label>1- Police Station / District:</label>
-            <div class="input">{Police Station / District}</div>
+            <div class="giraftari-input" id="police-station">{Police Station / District}</div>
         </div>
-        <div class="section">
+        <div class="giraftari-section" id="crime-number-section">
             <label>2- Crime Number:</label>
-            <div class="input">{Crime Number}</div>
+            <div class="giraftari-input" id="crime-number">{Crime Number}</div>
         </div>
-        <div class="section">
+        <div class="giraftari-section" id="accused-details-section">
             <label>3- Details of the arrested person:</label>
-            <div class="input">
+            <div class="giraftari-input" id="accused-details">
                 <ul>
-                    <li>Name: {Name}</li>
-                    <li>Father's Name: {Father's Name}</li>
-                    <li>Mother's Name: {Mother's Name}</li>
-                    <li>Age: {Age}</li>
-                    <li>Address: {Address}</li>
+                    <li id="accused-name">Name: {Name}</li>
+                    <li id="accused-father-name">Father's Name: {Father's Name}</li>
+                    <li id="accused-mother-name">Mother's Name: {Mother's Name}</li>
+                    <li id="accused-age">Age: {Age}</li>
+                    <li id="accused-address">Address: {Address}</li>
                 </ul>
             </div>
         </div>
-        <div class="section">
+        <div class="giraftari-section" id="arrest-date-time-section">
             <label>4- Date and Time of Arrest:</label>
-            <div class="input">{Date and Time}</div>
+            <div class="giraftari-input" id="arrest-date-time">{Date and Time}</div>
         </div>
-        <div class="section">
+        <div class="giraftari-section" id="place-of-arrest-section">
             <label>5- Place of Arrest:</label>
-            <div class="input">{Place of Arrest}</div>
+            <div class="giraftari-input" id="place-of-arrest">{Place of Arrest}</div>
         </div>  
-        <div class="section">
+        <div class="giraftari-section" id="arresting-officer-section">
             <label>6- Name and position of the arresting officer:</label>
-            <div class="input">{Name and Position}</div>
+            <div class="giraftari-input" id="arresting-officer">{Name and Position}</div>
         </div>
-        <div class="section">
+        <div class="giraftari-section" id="witness-section">
             <label>7- Name of witness present at the time of arrest:</label>
-            <div class="input">
+            <div class="giraftari-input" id="witnesses">
                 <ul>
-                    <li>1) {Witness 1}</li>
-                    <li>2) {Witness 2}</li>
+                    <li id="witness1">1) {Witness 1}</li>
+                    <li id="witness2">2) {Witness 2}</li>
                 </ul>
             </div>
         </div>
-        <div class="section">
+        <div class="giraftari-section" id="relative-notified-section">
             <label>8- Name and address of the friend/relative of the arrested person or the person identified to whom the arrest information is given:</label>
-            <div class="input">{Friend/Relative Name and Address}</div>
+            <div class="giraftari-input" id="relative-notified">{Friend/Relative Name and Address}</div>
         </div>
-        <div class="section">
+        <div class="giraftari-section" id="items-found-section">
             <label>9- Details of items found on the arrested person at the time of arrest, if any:</label>
-            <div class="input">{Items}</div>
+            <div class="giraftari-input" id="items-found">{Items}</div>
         </div>
-        <div class="footer">
+        <div class="giraftari-footer">
             <p>It is certified that the arrested person has been informed of his/her arrest and rights.</p>
         </div>
-        <div class="signatures">
-            <div class="signature-section">
+        <div class="giraftari-signatures">
+            <div class="giraftari-signature-section" id="signature-arrested-person-section">
                 <label>Signature of the arrested person:</label>
-                <div class="input">{Signature}</div>
+                <div class="giraftari-input" id="signature-arrested-person">{Signature}</div>
             </div>
-            <div class="signature-section">
+            <div class="giraftari-signature-section" id="signature-officer-section">
                 <label>Signature of the officer:</label>
-                <div class="input">{Officer Signature}</div>
+                <div class="giraftari-input" id="signature-officer">{Officer Signature}</div>
             </div>
         </div>
-        <div class="footer">
+        <div class="giraftari-footer">
             <p>Note- 01- This arrest warrant is to inform the family or friends of the arrested person about the arrest.</p>
             <p>02- This document is for the welfare of the arrested person/relative.</p>
         </div>
