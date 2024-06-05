@@ -1,69 +1,84 @@
-body {
+.giraftari-body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     background: #f4f4f4;
     margin: 0;
     padding: 20px;
 }
-.container {
+
+.giraftari-container {
     max-width: 800px;
     margin: 0 auto;
     background: white;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.header, .footer {
+
+.giraftari-header, .giraftari-footer {
     text-align: right;
 }
-.header {
+
+.giraftari-header {
     margin-bottom: 20px;
 }
-.title {
+
+.giraftari-title {
     text-align: center;
     font-weight: bold;
     margin-bottom: 20px;
 }
-.section {
+
+.giraftari-section {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
-.section label {
+
+.giraftari-section label {
     flex: 0 0 40%;
     font-weight: bold;
 }
-.section .input {
+
+.giraftari-section .giraftari-input {
     flex: 1;
     text-align: left;
     border-bottom: 1px solid #000;
     padding-left: 20px;
 }
-.section .input ul {
+
+.giraftari-section .giraftari-input ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-.section .input ul li {
+
+.giraftari-section .giraftari-input ul li {
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.signatures {
+
+.giraftari-signatures {
     display: flex;
     justify-content: space-between;
     margin-top: 40px;
 }
-.signatures div {
+
+.giraftari-signatures div {
     text-align: center;
-    width: 45%; 
+    width: 45%;
 }
-.signatures div .input {
+
+.giraftari-signatures div .giraftari-input {
     margin-top: 5px;
     border-bottom: 1px solid #000;
     padding-left: 20px;
 }
-.footer {
+
+.giraftari-footer {
     margin-top: 20px;
 }
-.footer p {
+
+.giraftari-footer p {
     margin: 10px 0;
 }
+    

@@ -66,7 +66,7 @@ const RemandInput = () => {
               <label className="form-label" htmlFor="district">District</label>
               <input className="form-input" type="text" id="district" name="district" value={formData.district} onChange={handleChange} required />
 
-              <label className="form-label" htmlFor="caseNo">Case No</label>
+              <label className="form-label" htmlFor="caseNo">POR Number</label>
               <input className="form-input" type="text" id="caseNo" name="caseNo" value={formData.caseNo} onChange={handleChange} required />
 
               <label className="form-label" htmlFor="caseDate">Case Date</label>
