@@ -48,7 +48,7 @@ const SoochnaInput = () => {
             <h1>Soochna Details</h1>
             <div className="form-section">
               <h2>Case Details</h2>
-              <label className="form-label" htmlFor="caseNumber">Case Number</label>
+              <label className="form-label" htmlFor="caseNumber">POR Number</label>
               <input className="form-input" type="text" id="caseNumber" name="caseNumber" value={formData.caseNumber} onChange={handleChange} required />
 
               <label className="form-label" htmlFor="date">Date</label>
