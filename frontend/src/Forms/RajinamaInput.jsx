@@ -3,7 +3,26 @@ import RajinamaForm from './RajinamaForm';
 
 const RajinamaInput = () => {
   const [formData, setFormData] = useState({
-    suspectCount: 5,
+    suspect1: '',
+    fatherName1: '',
+    caste1: '',
+    residence1: '',
+    suspect2: '',
+    fatherName2: '',
+    caste2: '',
+    residence2: '',
+    suspect3: '',
+    fatherName3: '',
+    caste3: '',
+    residence3: '',
+    suspect4: '',
+    fatherName4: '',
+    caste4: '',
+    residence4: '',
+    suspect5: '',
+    fatherName5: '',
+    caste5: '',
+    residence5: '',
     forestRelatedCrimes: '',
     date: '',
     month: '',
@@ -61,16 +80,6 @@ const RajinamaInput = () => {
           <form onSubmit={handleSubmit} id="rajinamaForm">
             <h1>Rajinama Form</h1>
             <div className="form-section">
-              <label className="form-label" htmlFor="suspectCount">Number of Suspects</label>
-              <input
-                className="form-input"
-                type="number"
-                id="suspectCount"
-                name="suspectCount"
-                value={formData.suspectCount}
-                onChange={handleSuspectCountChange}
-                min="1"
-              />
               <h2>Suspects Details</h2>
               {suspects.map((suspect, index) => (
                 <React.Fragment key={index}>

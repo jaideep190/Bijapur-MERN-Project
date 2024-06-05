@@ -1,26 +1,37 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-const userFormStatusSchema = new mongoose.Schema({
-    porNumber:{
-        type:String,
-        required:true
+const FormStatusSchema = new mongoose.Schema({
+  porNumber: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  forms: {
+    por: {
+      type: Boolean,
+      default: false,
     },
-    porForm:{
-        type:Boolean,
+    jabtinama: {
+      type: Boolean,
+      default: false,
     },
-    japtinamaForm:{
-        type:Boolean,
+    supurthinama: {
+      type: Boolean,
+      default: false,
     },
-    rajinamaForm:{
-        type:Boolean,
+    rajinama: {
+      type: Boolean,
+      default: false,
     },
-    girafthariPanchnamaForm:{
-        type:Boolean,
+    panchanama: {
+      type: Boolean,
+      default: false,
     },
-    supurdnamaForm:{
-        type:Boolean,
-    },    
+  },
+  linkedForms: [{
+    type: String,
+    enum: ['Jabtinama', 'Supurthinama', 'Rajinama', 'Panchanama'],
+  }],
 });
 
-const userFormStatusModels = mongoose.model('userFormStatusModels', userFormStatusSchema);
-export default userFormStatusModels;
+module.exports = mongoose.model('FormStatus', FormStatusSchema);
