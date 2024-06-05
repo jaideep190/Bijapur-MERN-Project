@@ -3,26 +3,7 @@ import RajinamaForm from './RajinamaForm';
 
 const RajinamaInput = () => {
   const [formData, setFormData] = useState({
-    suspect1: '',
-    fatherName1: '',
-    caste1: '',
-    residence1: '',
-    suspect2: '',
-    fatherName2: '',
-    caste2: '',
-    residence2: '',
-    suspect3: '',
-    fatherName3: '',
-    caste3: '',
-    residence3: '',
-    suspect4: '',
-    fatherName4: '',
-    caste4: '',
-    residence4: '',
-    suspect5: '',
-    fatherName5: '',
-    caste5: '',
-    residence5: '',
+    suspectCount: 1,
     forestRelatedCrimes: '',
     date: '',
     month: '',
@@ -81,15 +62,24 @@ const RajinamaInput = () => {
             <h1>Rajinama Form</h1>
             <div className="form-section">
               <h2>Suspects Details</h2>
-              {suspects.map((suspect, index) => (
+              <label className="form-label" htmlFor="suspectCount">Number of Suspects</label>
+              <input
+                className="form-input"
+                type="number"
+                id="suspectCount"
+                name="suspectCount"
+                value={formData.suspectCount}
+                onChange={handleSuspectCountChange}
+              />
+              {[...Array(formData.suspectCount)].map((_, index) => (
                 <React.Fragment key={index}>
                   <label className="form-label" htmlFor={`name${index}`}>Suspect {index + 1}</label>
                   <input
                     className="form-input"
                     type="text"
                     id={`name${index}`}
-                    name="name"
-                    value={suspect.name}
+                    name={`name${index}`}
+                    value={suspects[index].name}
                     onChange={(e) => handleSuspectChange(index, e)}
                   />
                   <label className="form-label" htmlFor={`fatherName${index}`}>Father's Name {index + 1}</label>
@@ -97,8 +87,8 @@ const RajinamaInput = () => {
                     className="form-input"
                     type="text"
                     id={`fatherName${index}`}
-                    name="fatherName"
-                    value={suspect.fatherName}
+                    name={`fatherName${index}`}
+                    value={suspects[index].fatherName}
                     onChange={(e) => handleSuspectChange(index, e)}
                   />
                   <label className="form-label" htmlFor={`caste${index}`}>Caste {index + 1}</label>
@@ -106,8 +96,8 @@ const RajinamaInput = () => {
                     className="form-input"
                     type="text"
                     id={`caste${index}`}
-                    name="caste"
-                    value={suspect.caste}
+                    name={`caste${index}`}
+                    value={suspects[index].caste}
                     onChange={(e) => handleSuspectChange(index, e)}
                   />
                   <label className="form-label" htmlFor={`residence${index}`}>Residence {index + 1}</label>
@@ -115,8 +105,8 @@ const RajinamaInput = () => {
                     className="form-input"
                     type="text"
                     id={`residence${index}`}
-                    name="residence"
-                    value={suspect.residence}
+                    name={`residence${index}`}
+                    value={suspects[index].residence}
                     onChange={(e) => handleSuspectChange(index, e)}
                   />
                 </React.Fragment>
@@ -151,4 +141,3 @@ const RajinamaInput = () => {
 };
 
 export default RajinamaInput;
-``

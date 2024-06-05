@@ -80,7 +80,7 @@ const RajinamaInput = () => {
                     className="form-input"
                     type="text"
                     id={`name${index}`}
-                    name="name"
+                    name={`name${index}`}
                     value={suspect.name}
                     onChange={(e) => handleSuspectChange(index, e)}
                     required
@@ -90,7 +90,7 @@ const RajinamaInput = () => {
                     className="form-input"
                     type="text"
                     id={`fatherName${index}`}
-                    name="fatherName"
+                    name={`fatherName${index}`}
                     value={suspect.fatherName}
                     onChange={(e) => handleSuspectChange(index, e)}
                     required
@@ -100,7 +100,7 @@ const RajinamaInput = () => {
                     className="form-input"
                     type="text"
                     id={`caste${index}`}
-                    name="caste"
+                    name={`caste${index}`}
                     value={suspect.caste}
                     onChange={(e) => handleSuspectChange(index, e)}
                     required
@@ -110,7 +110,7 @@ const RajinamaInput = () => {
                     className="form-input"
                     type="text"
                     id={`residence${index}`}
-                    name="residence"q
+                    name={`residence${index}`}
                     value={suspect.residence}
                     onChange={(e) => handleSuspectChange(index, e)}
                     required
