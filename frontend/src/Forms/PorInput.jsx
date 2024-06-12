@@ -5,7 +5,6 @@ import '../styles/PorInput.css';
 import { useSavePorMutation, useUpdateFormStatusMutation } from '../slices/usersApiSlice';
 import Loader from '../components/Loader';
 import { ToastContainer, toast } from 'react-toastify';
-
 const PorInput = () => {
     const [formData, setFormData] = useState({
         porNumber: '',

@@ -1,62 +1,24 @@
-const express = require('express');
-const {
-  authUser,
-  registerUser,
-  logoutUser,
-  getUserProfile,
-  updateUserProfile,
-} = require('../controllers/userController');
-const { protect } = require('../middleware/authMiddleware');
-const { savePOR } = require('../controllers/porData');
-const { ExistingPorNumbers } = require('../controllers/ExistingPorNumbersController');
-const getUserFormStatus = require('../controllers/getUserFormStatus');
-const updateUserFormStatus = require('../controllers/updateUserFormStatus');
-const {
-  createPOR,
-  getPOR,
-  createJabtinama,
-  getJabtinama,
-  createSupurthinama,
-  getSupurthinama,
-  createRajinama,
-  getRajinama,
-  createPanchanama,
-  getPanchanama,
-} = require('../controllers/formController');
+// backend/routes/userRoutes.js
+
+import express from 'express';
+import { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile } from '../controllers/userController.js';
+import { protect } from '../middleware/authMiddleware.js';
+import { savePOR } from '../controllers/porData.js';
+import { getCrimeDetails } from '../controllers/crimeDetailsController.js'; // Import the new controller
+import porDatas from '../models/PorModel.js';
 
 const router = express.Router();
 
-// User Authentication Routes
 router.post('/', registerUser);
 router.post('/auth', authUser);
 router.post('/logout', logoutUser);
+router
+  .route('/profile')
+  .get(protect, getUserProfile)
+  .put(protect, updateUserProfile);
 
-// User Profile Routes
-router.route('/profile').get(protect, getUserProfile).put(protect, updateUserProfile);
+router.post('/savepor',protect, savePOR);
+router.route('/crimedetails').get(protect, getCrimeDetails); // Use the function from the new controller
 
-// POR Routes
-router.post('/por', protect, createPOR);
-router.get('/por/:porNumber', protect, getPOR);
+export default router;
 
-// Jabtinama Routes
-router.post('/jabtinama', protect, createJabtinama);
-router.get('/jabtinama/:porNumber', protect, getJabtinama);
-
-// Supurthinama Routes
-router.post('/supurthinama', protect, createSupurthinama);
-router.get('/supurthinama/:porNumber', protect, getSupurthinama);
-
-// Rajinama Routes
-router.post('/rajinama', protect, createRajinama);
-router.get('/rajinama/:porNumber', protect, getRajinama);
-
-// Panchanama Routes
-router.post('/panchanama', protect, createPanchanama);
-router.get('/panchanama/:porNumber', protect, getPanchanama);
-
-// Additional Routes for Form Status
-router.post('/getuserformstatus', protect, getUserFormStatus);
-router.post('/updateuserformstatus', protect, updateUserFormStatus);
-
-
-module.exports = router;
