@@ -5,6 +5,11 @@ import '../styles/PorInput.css';
 import { useSavePorMutation, useUpdateFormStatusMutation } from '../slices/usersApiSlice';
 import Loader from '../components/Loader';
 import { ToastContainer, toast } from 'react-toastify';
+<<<<<<< HEAD
+import ImageUploader from '../components/ImageUploader';
+  
+=======
+>>>>>>> d079f87389c43e5624dd71dbfb138d5d78145740
 const PorInput = () => {
     const [formData, setFormData] = useState({
         porNumber: '',
@@ -115,6 +120,7 @@ const PorInput = () => {
                     <button className="form-button" type="submit">Register Crime</button>
                     {isLoading && <Loader />}
                 </form>
+                <ImageUploader /> {/* Added ImageUploader component */}
             </div>
         </>
         );
