@@ -58,7 +58,48 @@ function RajinamaForm({ formData, handleEditClick }) {
             <div className="rajinama-suspects">
               Signatures of the suspects:<br />
               {suspects.map((suspect, index) => (
-                <span key={index}>{suspect.name}<br /></span>
+                <React.Fragment key={index}>
+                  <label className="form-label" htmlFor={`name${index}`}>Suspect {index + 1}</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    id={`name${index}`}
+                    name="name"
+                    value={suspect.name}
+                    onChange={(e) => handleSuspectChange(index, e)}
+                    required
+                  />
+                  <label className="form-label" htmlFor={`fatherName${index}`}>Father's Name {index + 1}</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    id={`fatherName${index}`}
+                    name="fatherName"
+                    value={suspect.fatherName}
+                    onChange={(e) => handleSuspectChange(index, e)}
+                    required
+                  />
+                  <label className="form-label" htmlFor={`caste${index}`}>Caste {index + 1}</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    id={`caste${index}`}
+                    name="caste"
+                    value={suspect.caste}
+                    onChange={(e) => handleSuspectChange(index, e)}
+                    required
+                  />
+                  <label className="form-label" htmlFor={`residence${index}`}>Residence {index + 1}</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    id={`residence${index}`}
+                    name="residence"q
+                    value={suspect.residence}
+                    onChange={(e) => handleSuspectChange(index, e)}
+                    required
+                  />
+                </React.Fragment>
               ))}
             </div>
           </div>
