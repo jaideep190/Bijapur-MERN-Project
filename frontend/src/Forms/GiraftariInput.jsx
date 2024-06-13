@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import GiraftariForm from './GiraftariForm';
+import '../styles/GiraftariInput.css'; 
+import { useSaveGiraftariMutation, useUpdateFormStatusMutation } from '../slices/usersApiSlice';
+import Loader from '../components/Loader';
+import { ToastContainer, toast } from 'react-toastify';
 
 const GiraftariInput = () => {
   const [formData, setFormData] = useState({
@@ -21,35 +26,58 @@ const GiraftariInput = () => {
     signatureOfficer: ''
   });
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
+  const [error, setError] = useState('');
+  const [saveGiraftari, { isLoading }] = useSaveGiraftariMutation();
+  const [updateFormStatus, { updateIsLoading }] = useUpdateFormStatusMutation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setFormData({ ...formData, toggle: 1 });
+    const response = await updateFormStatus({ crimeNumber: formData.crimeNumber, formType: 'giraftariForm' });
+    console.log(`Update response: ${response}`);
+  };
+
+  const saveData = async (e) => {
+    e.preventDefault();
+    const formValues = Object.values(formData);
+    if (formValues.some(value => value === '')) {
+      toast.error('Please fill in all the fields');
+      return;
+    }
+    try {
+      const response = await saveGiraftari(formData);
+      console.log(response);
+      toast.success(response.data.msg);
+      
+      if (response.data.msg === 'Giraftari Created!') {
+        handleSubmit();
+      }
+    } catch (error) {
+      setError({ error: error.message });
+      toast.error('Error: ', error);
+    }
   };
 
   const handleEditClick = () => {
-    setIsEditing(true);
-    setIsSubmitted(false);
+    setFormData({ ...formData, toggle: 0 });
   };
 
-  return (
-    <>
-      {!isSubmitted ? (
+  if (!formData.toggle) {
+    return (
+      <>
         <div className="form-container">
-          <form onSubmit={handleSubmit} id="giraftariForm">
-            <h1>Arrest Warrant Details</h1>
+          <h1>Arrest Warrant Details</h1>
+          <form onSubmit={saveData} id="giraftariForm">
             <div className="form-section">
               <h2>Case Details</h2>
               <label className="form-label" htmlFor="policeStationDistrict">Police Station / District</label>
               <input className="form-input" type="text" id="policeStationDistrict" name="policeStationDistrict" value={formData.policeStationDistrict} onChange={handleChange} required />
-
+              
               <label className="form-label" htmlFor="crimeNumber">POR Number</label>
               <input className="form-input" type="text" id="crimeNumber" name="crimeNumber" value={formData.crimeNumber} onChange={handleChange} required />
 
@@ -105,15 +133,16 @@ const GiraftariInput = () => {
               <input className="form-input" type="text" id="signatureOfficer" name="signatureOfficer" value={formData.signatureOfficer} onChange={handleChange} required />
             </div>
 
-            <button className="sunmit-button" onClick={() => setIsSubmitted(true)} type="button">Show Form</button>
-            <button type="submit" className="submit-button">Submit Form</button>
+            <button className="form-button" onClick={handleSubmit} type="button">Show Form</button>
+            <button className="form-button" type="submit">Submit Form</button>
+            {isLoading && <Loader />}
           </form>
         </div>
-      ) : (
-        <GiraftariForm formData={formData} handleEditClick={handleEditClick} />
-      )}
-    </>
-  );
+      </>
+    );
+  } else {
+    return <GiraftariForm formData={formData} handleEditClick={handleEditClick} />;
+  }
 };
 
 export default GiraftariInput;

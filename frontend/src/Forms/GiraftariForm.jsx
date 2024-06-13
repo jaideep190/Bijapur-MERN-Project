@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import '../styles/GiraftariForm.css';
+import ReactToPrint from 'react-to-print';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 function GiraftariForm({ formData, handleEditClick }) {
   const {
@@ -8,13 +11,35 @@ function GiraftariForm({ formData, handleEditClick }) {
     itemsFound, signatureArrestedPerson, signatureOfficer
   } = formData;
 
-  const handlePrintClick = () => {
-    window.print();
+  const componentRef = useRef();
+
+  const handleDownloadPDF = () => {
+    const input = componentRef.current;
+    const scale = 3;
+
+    html2canvas(input, {
+      scale: scale,
+      useCORS: true,
+      allowTaint: true,
+      scrollX: 0,
+      scrollY: -window.scrollY,
+    })
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png', 1.0);
+        const pdf = new jsPDF('p', 'pt', [canvas.width, canvas.height]);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('giraftari_form.pdf');
+      })
+      .catch((error) => {
+        console.log('Error occurred:', error);
+      });
   };
 
   return (
     <>
-      <div className="giraftari-container">
+      <div ref={componentRef} className="giraftari-container">
         <div className="giraftari-header">
           <span>M</span> <span>72</span>
         </div>
@@ -89,7 +114,13 @@ function GiraftariForm({ formData, handleEditClick }) {
         </div>
       </div>
       <button onClick={handleEditClick} className="edit-button">Edit</button>
-      <button onClick={handlePrintClick} className="print-button">Print Form</button>
+      <button onClick={handleDownloadPDF} className="download-button">Download PDF</button>
+      <ReactToPrint
+        trigger={() => <button className="print-button">Print Form</button>}
+        content={() => componentRef.current}
+        documentTitle="Arrest Warrant"
+        pageStyle="print"
+      />
     </>
   );
 }

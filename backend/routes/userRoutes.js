@@ -5,7 +5,6 @@ import { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile }
 import { protect } from '../middleware/authMiddleware.js';
 import { savePOR } from '../controllers/porData.js';
 import { getCrimeDetails } from '../controllers/crimeDetailsController.js'; // Import the new controller
-import porDatas from '../models/PorModel.js';
 import { saveGiraftari } from '../controllers/GiraftariController.js';
 
 const router = express.Router();
