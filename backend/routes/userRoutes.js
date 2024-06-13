@@ -19,7 +19,7 @@ router
   .put(protect, updateUserProfile);
 
 router.post('/savepor',protect, savePOR);
-router.post('/saveGiraftari',protect, saveGiraftari);
+router.post('/savegiraftari',protect, saveGiraftari);
 router.route('/crimedetails').get(protect, getCrimeDetails); // Use the function from the new controller
 
 export default router;
