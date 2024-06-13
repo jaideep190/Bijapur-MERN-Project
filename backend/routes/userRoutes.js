@@ -6,6 +6,7 @@ import { protect } from '../middleware/authMiddleware.js';
 import { savePOR } from '../controllers/porData.js';
 import { getCrimeDetails } from '../controllers/crimeDetailsController.js'; // Import the new controller
 import porDatas from '../models/PorModel.js';
+import { saveGiraftari } from '../controllers/GiraftariController.js';
 
 const router = express.Router();
 
@@ -18,7 +19,9 @@ router
   .put(protect, updateUserProfile);
 
 router.post('/savepor',protect, savePOR);
+router.post('/saveGiraftari',protect, saveGiraftari);
 router.route('/crimedetails').get(protect, getCrimeDetails); // Use the function from the new controller
 
 export default router;
+
 
