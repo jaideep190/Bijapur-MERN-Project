@@ -34,7 +34,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
     }),
     getCrimeDetails: builder.query({
       query: () => ({
-        url: `${USERS_URL}/existingpornumbers`,
+        url: `${USERS_URL}/crimedetails`,
         method: 'GET',
       }),
     }),

@@ -3,14 +3,14 @@
     line-height: 1.6;
     background: #f4f4f4;
     margin: 0;
-    padding: 20px;
+    padding: 15px; /* Further reduced padding */
 }
 
 .giraftari-container {
-    max-width: 800px;
+    max-width: 600px; /* Further reduced max-width */
     margin: 0 auto;
     background: white;
-    padding: 20px;
+    padding: 10px; /* Further reduced padding */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -19,33 +19,34 @@
 }
 
 .giraftari-header {
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* Further reduced margin */
 }
 
-.giraftari-title {
+.giraftari-heading-title {
     text-align: center;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 5px; /* Further reduced margin */
+    font-size: 0.9em; /* Further reduced font size */
 }
-
 .giraftari-section {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* Further reduced margin */
 }
 
 .giraftari-section label {
     flex: 0 0 40%;
     font-weight: bold;
+    font-size: 0.7em; /* Further reduced font size */
 }
 
 .giraftari-section .giraftari-input {
     flex: 1;
     text-align: left;
     border-bottom: 1px solid #000;
-    padding-left: 20px;
+    padding-left: 10px; /* Further reduced padding */
+    font-size: 0.8em; /* Further reduced font size */
 }
-
 .giraftari-section .giraftari-input ul {
     list-style: none;
     padding: 0;
@@ -55,30 +56,37 @@
 .giraftari-section .giraftari-input ul li {
     margin-top: 5px;
     margin-bottom: 5px;
+    font-size: 0.7em; /* Further reduced font size */
 }
 
 .giraftari-signatures {
     display: flex;
     justify-content: space-between;
-    margin-top: 40px;
+    margin-top: 0.4em; /* Further reduced margin */
 }
 
 .giraftari-signatures div {
     text-align: center;
-    width: 45%;
+    width: 25%; /* Further reduced width */
 }
 
 .giraftari-signatures div .giraftari-input {
     margin-top: 5px;
     border-bottom: 1px solid #000;
-    padding-left: 20px;
+    padding-left: 10px; /* Further reduced padding */
+    font-size: 1em; /* Further reduced font size */
 }
 
 .giraftari-footer {
-    margin-top: 20px;
+    margin-top: 10px; /* Further reduced margin */
 }
 
 .giraftari-footer p {
-    margin: 10px 0;
+    margin: 5px 0; /* Further reduced margin */
+    font-size: 0.7em; /* Further reduced font size */
 }
-    
+.giraftari-signatures {
+    font-size: 0.7em; /* Further reduced font size */
+}
+
+

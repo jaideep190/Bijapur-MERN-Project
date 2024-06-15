@@ -1,8 +1,6 @@
 import React, { useRef } from 'react';
 import '../styles/GiraftariForm.css';
 import ReactToPrint from 'react-to-print';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 
 function GiraftariForm({ formData, handleEditClick }) {
   const {
@@ -13,38 +11,14 @@ function GiraftariForm({ formData, handleEditClick }) {
 
   const componentRef = useRef();
 
-  const handleDownloadPDF = () => {
-    const input = componentRef.current;
-    const scale = 3;
-
-    html2canvas(input, {
-      scale: scale,
-      useCORS: true,
-      allowTaint: true,
-      scrollX: 0,
-      scrollY: -window.scrollY,
-    })
-      .then((canvas) => {
-        const imgData = canvas.toDataURL('image/png', 1.0);
-        const pdf = new jsPDF('p', 'pt', [canvas.width, canvas.height]);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save('giraftari_form.pdf');
-      })
-      .catch((error) => {
-        console.log('Error occurred:', error);
-      });
-  };
-
   return (
     <>
       <div ref={componentRef} className="giraftari-container">
         <div className="giraftari-header">
           <span>M</span> <span>72</span>
         </div>
-        <div className="giraftari-title">
-          <h1>Arrest Warrant</h1>
+        <div className="giraftari-heading-title" style={{ fontSize: '1.2em', textAlign: 'center', fontWeight: 'bold' }}>
+          <h1 style={{ fontSize: '1.2em', textAlign: 'center', fontWeight: 'bold' }}>Arrest Warrant</h1>
         </div>
         <div className="giraftari-section" id="police-station-section">
           <label>1- Police Station / District:</label>
@@ -113,16 +87,18 @@ function GiraftariForm({ formData, handleEditClick }) {
           <p>02- This document is for the welfare of the arrested person/relative.</p>
         </div>
       </div>
-      <button onClick={handleEditClick} className="edit-button">Edit</button>
-      <button onClick={handleDownloadPDF} className="download-button">Download PDF</button>
-      <ReactToPrint
-        trigger={() => <button className="print-button">Print Form</button>}
-        content={() => componentRef.current}
-        documentTitle="Arrest Warrant"
-        pageStyle="print"
-      />
+      <div className="button-container">
+        <button onClick={handleEditClick} className="edit-button">Edit</button>
+        <ReactToPrint
+          trigger={() => <button className="print-button">Print Form</button>}
+          content={() => componentRef.current}
+          documentTitle="Arrest Warrant"
+          pageStyle="print"
+        />
+      </div>
     </>
   );
 }
 
 export default GiraftariForm;
+
