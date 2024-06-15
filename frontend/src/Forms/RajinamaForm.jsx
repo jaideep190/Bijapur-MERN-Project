@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/rajinama.css';
+import '../styles/Rajinama.css';
 
 function RajinamaForm({ formData, handleEditClick }) {
   const {
