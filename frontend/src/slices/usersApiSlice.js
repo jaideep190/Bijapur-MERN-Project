@@ -38,13 +38,6 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: 'GET',
       }),
     }),
-    saveGiraftari: builder.mutation({
-      query: (data) => ({
-        url: `${USERS_URL}/savegiraftari`,
-        method: 'POST',
-        body: data,
-      }),
-    }),
     savePor: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/savepor`,
@@ -66,6 +59,13 @@ export const userApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    saveGiraftari: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/savegiraftari`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -78,5 +78,6 @@ export const {
   useSavePorMutation,
   useUpdateFormStatusMutation,
   useGetUserFormStatusMutation,
+  useSaveGiraftariMutation,
 } = userApiSlice;
 

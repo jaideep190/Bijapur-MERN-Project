@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 // Define the Giraftari schema
@@ -23,5 +23,4 @@ const GiraftariSchema = new Schema({
 
 // Create the Giraftari model
 const GiraftariDatas = mongoose.model('Giraftari', GiraftariSchema);
-
-module.exports = GiraftariDatas;
+export default GiraftariDatas;

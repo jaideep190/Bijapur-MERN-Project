@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import GiraftariForm from './GiraftariForm';
-import '../styles/GiraftariInput.css'; 
+// import '../styles/GiraftariInput.css';  
 import { useSaveGiraftariMutation, useUpdateFormStatusMutation } from '../slices/usersApiSlice';
 import Loader from '../components/Loader';
 import { ToastContainer, toast } from 'react-toastify';
