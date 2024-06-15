@@ -1,5 +1,4 @@
 import GiraftariDatas from '../models/GiraftariModel.js';
-
 const saveGiraftari = async (req, res) => {
     try {
         const formData = req.body;
