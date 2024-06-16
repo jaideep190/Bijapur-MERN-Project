@@ -116,7 +116,6 @@ const PorInput = () => {
                     <button className="form-button" type="submit">Register Crime</button>
                     {isLoading && <Loader />}
                 </form>
-                <ImageUploader /> {/* Added ImageUploader component */}
             </div>
         </>
         );
